@@ -1,0 +1,43 @@
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">// Failure Modes & Lessons Learned</div>
+    <h1 class="sh">What Actually Broke</h1>
+    <p class="ss">{{totalCount}} cases documented · No euphemisms · Sourced from NASA, OIG, and Soviet archives</p>
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Severity:</span>
+        <a href="/failures" class="filter-btn {{#if (eq severity 'all')}}active{{/if}}">All</a>
+        <a href="/failures?severity=Critical" class="filter-btn {{#if (eq severity 'Critical')}}active red{{/if}}">Critical</a>
+        <a href="/failures?severity=High" class="filter-btn {{#if (eq severity 'High')}}active gold{{/if}}">High</a>
+        <a href="/failures?severity=Medium" class="filter-btn {{#if (eq severity 'Medium')}}active{{/if}}">Medium</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <table class="failure-table">
+    <thead>
+      <tr>
+        <th>Program / Variant</th>
+        <th>Subsystem</th>
+        <th>Year</th>
+        <th>Failure & Engineering Lesson</th>
+        <th>Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each failures}}
+      <tr>
+        <td><strong>{{program}}</strong><div class="mono" style="font-size:.65rem;color:var(--paper3);margin-top:.25rem">{{id}}</div></td>
+        <td style="color:var(--paper3)">{{subsystem}}</td>
+        <td class="mono" style="font-size:.7rem;color:var(--paper3);white-space:nowrap">{{year}}</td>
+        <td>
+          <div class="fail-desc">{{failure}}</div>
+          <div class="fail-lesson">→ {{lesson}}</div>
+        </td>
+        <td><span class="sev-{{severityColor severity}}">{{severity}}</span></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

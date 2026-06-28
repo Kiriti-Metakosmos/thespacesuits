@@ -1,0 +1,10 @@
+<div class="page-header"><div class="page-header-inner">
+  <div class="eyebrow">// Program Archive</div>
+  <h1 class="sh">{{nationLabel}} Program</h1>
+  <p class="ss">{{programSuits.length}} documented variants · <a href="/database" style="color:var(--cyan)">View all nations →</a></p>
+</div></div>
+<section class="section">
+  <div class="db-grid">
+    {{#each programSuits}}{{> suit-card}}{{/each}}
+  </div>
+</section>

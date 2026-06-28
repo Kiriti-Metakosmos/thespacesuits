@@ -1,0 +1,31 @@
+<article class="db-card" itemscope itemtype="https://schema.org/Product">
+  <div class="db-card-top">
+    <span class="db-card-id mono">{{variantId}}</span>
+    <span class="tag tag-{{nationColor nation}}">{{category}}</span>
+  </div>
+  <div class="db-card-body">
+    <h3 class="db-card-name {{color}}" itemprop="name">{{name}}</h3>
+    <div class="db-card-origin mono" itemprop="brand">{{agency}} · {{manufacturer}}</div>
+    <div class="db-card-era">{{era}}</div>
+    <div class="db-specs">
+      <div class="db-spec">
+        <div class="db-spec-key">Pressure</div>
+        <div class="db-spec-val mono">{{formatPressure this}}</div>
+      </div>
+      <div class="db-spec">
+        <div class="db-spec-key">System mass</div>
+        <div class="db-spec-val mono">{{formatMass this}}</div>
+      </div>
+      <div class="db-spec">
+        <div class="db-spec-key">Life support</div>
+        <div class="db-spec-val mono">{{lssPrimary}}</div>
+      </div>
+      <div class="db-spec">
+        <div class="db-spec-key">EVA duration</div>
+        <div class="db-spec-val mono">{{formatEVA evaDurationHr}}</div>
+      </div>
+    </div>
+    <p class="db-lesson" itemprop="description">"{{truncate programLesson 140}}"</p>
+  </div>
+  <a href="/suits/{{slug}}" class="db-card-link" aria-label="View {{name}} technical details">View Full Archive →</a>
+</article>

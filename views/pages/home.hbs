@@ -1,0 +1,161 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <span class="eyebrow">Engineering Archive · thespacesuits.com</span>
+    </div>
+    <h1 class="hero-h1">THE<br><span class="g">SUIT</span><br><span class="c">ARCHIVE</span></h1>
+    <p class="hero-desc">Seventy years of pressure garment engineering across <strong>US, Soviet, Russian</strong> and incoming <strong>Chinese</strong> programs. Every variant. Every subsystem. Every failure. Primary sources—not Wikipedia summaries.</p>
+    <div class="hero-btns">
+      <a href="/database" class="btn btn-a">Explore Database</a>
+      <a href="/failures" class="btn btn-b">Failure Cases</a>
+      <a href="/roadmap" class="btn btn-c">Roadmap</a>
+    </div>
+    <div class="hero-metrics">
+      <div><span class="m-val c">{{totalSuits}}+</span><div class="m-lab">Variants</div></div>
+      <div><span class="m-val gold">16</span><div class="m-lab">Subsystems</div></div>
+      <div><span class="m-val red">{{totalFailures}}+</span><div class="m-lab">Failures</div></div>
+      <div><span class="m-val">70yr</span><div class="m-lab">History</div></div>
+    </div>
+  </div>
+  <div class="hero-right" aria-hidden="true">
+    <div class="suit-stage">
+      {{> suit-silhouette-sk1}}
+      {{> suit-silhouette-a7l}}
+      {{> suit-silhouette-orlan}}
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-label="Suit variants ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><em>US</em> Mercury IVA · X-15 · Gemini G3C · G4C · G5C · Apollo A7L · A7LB · Skylab · EMU · ACES · Enhanced EMU · xEMU · AxEMU</span>
+    <span class="ticker-item"><em>SOVIET/RU</em> SK-1 · SK-2 · BERKUT · YASTREB · KRECHET · SOKOL-K · SOKOL-KV-2 · ORLAN-D · ORLAN-DM · ORLAN-DMA · ORLAN-M · ORLAN-MK · STRIZH</span>
+    <span class="ticker-item"><em>CHINA</em> Feitian EVA · Shenzhou IVA · Coming 2026</span>
+    <span class="ticker-item"><em>US</em> Mercury IVA · X-15 · Gemini G3C · G4C · G5C · Apollo A7L · A7LB · Skylab · EMU · ACES · Enhanced EMU · xEMU · AxEMU</span>
+    <span class="ticker-item"><em>SOVIET/RU</em> SK-1 · SK-2 · BERKUT · YASTREB · KRECHET · SOKOL-K · SOKOL-KV-2 · ORLAN-D · ORLAN-DM · ORLAN-DMA · ORLAN-M · ORLAN-MK · STRIZH</span>
+    <span class="ticker-item"><em>CHINA</em> Feitian EVA · Shenzhou IVA · Coming 2026</span>
+  </div>
+</div>
+
+<!-- ERA STRIP -->
+<div class="era-strip">
+  <a href="/programs/us" class="era-cell ec-us">
+    <div class="era-num">18</div>
+    <div class="era-title">US Program Variants</div>
+    <div class="era-desc">Mercury through AxEMU. 18 operational and reference variants spanning IVA, IEVA, and orbital EVA systems.</div>
+  </a>
+  <a href="/programs/soviet" class="era-cell ec-ru">
+    <div class="era-num">17</div>
+    <div class="era-title">Soviet / Russian Suits</div>
+    <div class="era-desc">SK-1 to Orlan-MK. Rescue IVA, lunar EVA concepts, and the rear-entry Orlan family still operating on the ISS today.</div>
+  </a>
+  <a href="/failures" class="era-cell ec-fail">
+    <div class="era-num">50+</div>
+    <div class="era-title">Failure Modes Logged</div>
+    <div class="era-desc">Hard failures, near-misses, chronic constraints. Includes EVA-23 — the helmet water intrusion that nearly killed Luca Parmitano.</div>
+  </a>
+  <a href="/programs/china" class="era-cell ec-next">
+    <div class="era-num">CHINA</div>
+    <div class="era-title">Feitian Program — Coming</div>
+    <div class="era-desc">The third major space power. Shenzhou IVA and Feitian EVA workbook in production. Publication imminent.</div>
+  </a>
+</div>
+
+<!-- FEATURED SUITS -->
+<section class="section">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">// Variant Master Database</div>
+      <h2 class="sh">Featured Suits</h2>
+      <p class="ss">Normalized across pressure, mass, life support, mission role and failure modes</p>
+    </div>
+    <a href="/database" class="btn btn-b btn-sm">View All {{totalSuits}} Suits →</a>
+  </div>
+  <div class="db-grid">
+    {{#each suits}}
+    {{> suit-card}}
+    {{/each}}
+  </div>
+</section>
+
+<!-- EDITORIAL FEATURE -->
+<div class="full-bleed">
+  <div class="editorial">
+    <div class="editorial-main">
+      <div class="eyebrow">// Engineering Deep-Dive</div>
+      <h2 class="edit-h2">WHY GLOVES<br>KEPT KILLING<br>EVERY MISSION</h2>
+      <p class="edit-body">Across 70 years and three space programs, the same subsystem remained the single most persistent mission limiter: the glove. Hand fatigue in Gemini IV made America's first EVA nearly catastrophic. Cold-object handling plagued Apollo. Pre-Phase VI EMU glove injuries—numbness, bladder bunching, palm-bar wear-through into hand—drove formal NASA injury surveillance in the 1990s.</p>
+      <p class="edit-body">The archive documents <strong>12 distinct glove development lines</strong> across US and Soviet programs. Not what was built—but why each iteration failed to solve the fundamental physics of dexterity under 3.7–5.8 psi. The Russian BERKUT glove of 1965 and the ISS Phase VI of 2002 share the same core failure: torque and thermal performance trade against each other at the finger joint level.</p>
+      <a href="/subsystems" class="btn btn-b">Read Subsystem Analysis</a>
+    </div>
+    <div class="editorial-side">
+      <div class="side-block">
+        <span class="tag tag-gold">Rear Entry</span>
+        <div class="side-title">Why Soviets Chose Rear-Entry Architecture</div>
+        <p class="side-body">KRECHET-94 and the Orlan family both use rear-entry hard upper torso. Not accidental — it solved donning alone on a lunar surface without ground crew. Traced from 1967 through modern suitport concepts.</p>
+        <a href="/suits/krechet" class="side-lnk">Explore KRECHET →</a>
+      </div>
+      <div class="side-block">
+        <span class="tag tag-red">Critical Failure</span>
+        <div class="side-title">EVA-23: Helmet Water Intrusion</div>
+        <p class="side-body">2013. ISS. Parmitano's helmet filled with water. Vision impaired, comms degraded, breathing compromised. Water separator blockage in the enhanced EMU's cooling loop. Potentially lethal. Full forensic breakdown here.</p>
+        <a href="/failures" class="side-lnk">Read Failure Case →</a>
+      </div>
+      <div class="side-block">
+        <span class="tag tag-purple">Coming Soon</span>
+        <div class="side-title">China Feitian Workbook</div>
+        <p class="side-body">Third major space power's EVA program documented in the same structured engineering format as US and Soviet workbooks. Feitian EVA suit subsystem decomposition and roadmap. Imminent.</p>
+        <a href="/about" class="side-lnk">Get notified →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CRITICAL FAILURES PREVIEW -->
+<section class="section">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">// What Actually Broke</div>
+      <h2 class="sh">Critical Failures</h2>
+      <p class="ss">No euphemisms. Sourced from NASA, OIG reports, and Soviet technical archives.</p>
+    </div>
+    <a href="/failures" class="btn btn-b btn-sm">All {{totalFailures}} Failure Cases →</a>
+  </div>
+  <div class="failure-preview-grid">
+    {{#each criticalFailures}}
+    <div class="failure-preview-card">
+      <div class="fp-header">
+        <span class="tag tag-red">{{severity}}</span>
+        <span class="fp-year mono">{{year}}</span>
+      </div>
+      <div class="fp-program">{{program}}</div>
+      <div class="fp-subsystem">{{subsystem}}</div>
+      <p class="fp-failure">{{failure}}</p>
+      <p class="fp-lesson">→ {{lesson}}</p>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+<!-- DATA STRIP -->
+<div class="data-strip">
+  <div class="data-cell"><span class="data-big c">40+</span><span class="data-lbl">Variants Documented</span></div>
+  <div class="data-cell"><span class="data-big gold">16</span><span class="data-lbl">Subsystems Analyzed</span></div>
+  <div class="data-cell"><span class="data-big red">50+</span><span class="data-lbl">Failure Cases Logged</span></div>
+  <div class="data-cell"><span class="data-big">70yr</span><span class="data-lbl">Timeline Coverage</span></div>
+  <div class="data-cell"><span class="data-big purple">3+</span><span class="data-lbl">Nations · China Coming</span></div>
+</div>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="eyebrow">// Why This Archive Exists</div>
+  <h2 class="manifesto-h">BUILT BY<br>ENGINEERS.<br><span class="c">NOT<br>MARKETERS.</span></h2>
+  <p class="manifesto-p">No listicles. No AI-generated filler. No Wikipedia summaries in dark mode. This is a structured engineering archive — primary sources, real failure cases, technical analysis from NASA, Zvezda, and OIG reports — for the people who need to build what comes next.</p>
+  <div class="manifesto-actions">
+    <a href="/database" class="btn btn-a">Enter the Archive</a>
+    <a href="/failures" class="btn btn-b">Failure Database</a>
+    <a href="/roadmap" class="btn btn-c">Development Roadmap</a>
+  </div>
+</div>

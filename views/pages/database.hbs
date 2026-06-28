@@ -1,0 +1,27 @@
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">// Variant Master Database</div>
+    <h1 class="sh">Suit Database</h1>
+    <p class="ss">{{totalCount}} suits displayed · filter by nation or category</p>
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">Nation:</span>
+        <a href="/database" class="filter-btn {{#if (eq nation 'all')}}active{{/if}}">All</a>
+        <a href="/database?nation=us{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'us')}}active cyan{{/if}}">US / NASA</a>
+        <a href="/database?nation=soviet{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'soviet')}}active gold{{/if}}">Soviet / Russia</a>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Category:</span>
+        <a href="/database{{#if (eq nation 'all')}}{{else}}?nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'all')}}active{{/if}}">All</a>
+        <a href="/database?category=IVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'IVA')}}active{{/if}}">IVA</a>
+        <a href="/database?category=IEVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'IEVA')}}active{{/if}}">IEVA</a>
+        <a href="/database?category=EVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'EVA')}}active{{/if}}">EVA</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section">
+  <div class="db-grid">
+    {{#each suits}}{{> suit-card}}{{/each}}
+  </div>
+</div>
