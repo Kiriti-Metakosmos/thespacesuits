@@ -1,8 +1,15 @@
 <article class="db-card" itemscope itemtype="https://schema.org/Product">
   <div class="db-card-top">
     <span class="db-card-id mono">{{variantId}}</span>
+    <img src="/images/flags/{{nation}}.svg" alt="{{nationLabel nation}}" class="flag-icon" width="20" height="13" aria-hidden="true" style="vertical-align:middle;margin-left:0.4rem;border-radius:2px">
     <span class="tag tag-{{nationColor nation}}">{{category}}</span>
   </div>
+  {{#if (hasPhoto slug)}}
+  <div style="background:#000;line-height:0;overflow:hidden">
+    <img src="/images/suits/{{slug}}.jpg" alt="{{name}} spacesuit photograph" itemprop="image"
+         style="display:block;width:100%;max-height:180px;object-fit:contain;background:#000" loading="lazy">
+  </div>
+  {{/if}}
   <div class="db-card-body">
     <h3 class="db-card-name {{color}}" itemprop="name">{{name}}</h3>
     <div class="db-card-origin mono" itemprop="brand">{{agency}} · {{manufacturer}}</div>

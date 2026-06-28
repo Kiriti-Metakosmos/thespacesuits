@@ -3,6 +3,7 @@ const { engine } = require('express-handlebars');
 const helmet = require('helmet');
 const compression = require('compression');
 const path = require('path');
+const fs = require('fs');
 
 const suits = require('./data/suits');
 const failures = require('./data/failures');
@@ -51,7 +52,8 @@ app.engine('hbs', engine({
       if (s.includes('Active')) return 'green';
       if (s.includes('development')) return 'purple';
       return 'paper3';
-    }
+    },
+    hasPhoto: (slug) => fs.existsSync(path.join(__dirname, 'public/images/suits', slug + '.jpg'))
   }
 }));
 app.set('view engine', 'hbs');
@@ -65,7 +67,7 @@ const defaultMeta = {
   twitterHandle: '@thespacesuits',
   defaultTitle: 'The Spacesuits — Engineering Archive',
   defaultDescription: 'Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. 40+ variants, 70 years of history, real failure cases and technical analysis.',
-  defaultImage: `${siteUrl}/images/og-default.jpg`
+  defaultImage: `${siteUrl}/images/all-suits-hero.jpg`
 };
 
 // ── Routes ───────────────────────────────────────────────────────
@@ -122,7 +124,7 @@ app.get('/suits/:slug', (req, res) => {
       canonical: `${siteUrl}/suits/${suit.slug}`,
       ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
     },
-    suit,
+    ...suit,
     related,
     suitFailures
   });

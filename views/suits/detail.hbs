@@ -1,14 +1,23 @@
 <div class="suit-detail-hero suit-hero--{{color}}">
-  <div class="suit-detail-inner">
-    <div class="suit-detail-meta">
+  <div class="suit-detail-inner" style="display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap">
+    <div class="suit-detail-meta" style="flex:1;min-width:260px">
       <div class="eyebrow">// {{variantId}} · {{nationLabel nation}}</div>
       <h1 class="suit-detail-name">{{name}}</h1>
       <div class="suit-detail-sub">{{manufacturer}} · {{era}}</div>
       <div class="suit-detail-tags">
         <span class="tag tag-{{nationColor nation}}">{{category}}</span>
         <span class="tag" style="color:var(--paper3)">{{status}}</span>
+        <img src="/images/flags/{{nation}}.svg" alt="{{nationLabel nation}}" width="24" height="16"
+             style="vertical-align:middle;border-radius:2px;margin-left:0.5rem" aria-hidden="true">
       </div>
     </div>
+    {{#if (hasPhoto slug)}}
+    <div class="suit-detail-hero-photo" style="flex:0 0 auto;text-align:center">
+      <img src="/images/suits/{{slug}}.jpg" alt="{{name}} spacesuit"
+           style="max-height:320px;max-width:280px;object-fit:contain;background:#000;display:block;border-radius:4px"
+           loading="eager">
+    </div>
+    {{/if}}
   </div>
 </div>
 
