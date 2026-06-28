@@ -67,7 +67,7 @@ const defaultMeta = {
   twitterHandle: '@thespacesuits',
   defaultTitle: 'The Spacesuits — Engineering Archive',
   defaultDescription: 'Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. 40+ variants, 70 years of history, real failure cases and technical analysis.',
-  defaultImage: `${siteUrl}/images/all-suits-hero.jpg`
+  defaultImage: `${siteUrl}/images/og-default.jpg`
 };
 
 // ── Routes ───────────────────────────────────────────────────────
