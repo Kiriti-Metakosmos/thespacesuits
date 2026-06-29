@@ -113,3 +113,29 @@
   </div>
 </div>
 {{/if}}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{name}} — Spacesuit Engineering Archive",
+  "description": "{{meta.pageDescription}}",
+  "author": {
+    "@type": "Organization",
+    "name": "Metakosmos Group",
+    "url": "https://www.metakosmos.co"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Spacesuits",
+    "url": "https://www.thespacesuits.com"
+  },
+  "datePublished": "2026-06-28",
+  "dateModified": "2026-06-29",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{meta.canonical}}"
+  },
+  "image": "https://www.thespacesuits.com/images/og-default.jpg"
+}
+</script>
