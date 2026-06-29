@@ -25,6 +25,8 @@ const ROUTES = [
   { url: '/about',           out: 'about/index.html' },
   { url: '/programs/us',     out: 'programs/us/index.html' },
   { url: '/programs/soviet', out: 'programs/soviet/index.html' },
+  { url: '/programs/china',  out: 'programs/china/index.html' },
+  { url: '/programs/esa',    out: 'programs/esa/index.html' },
   { url: '/sitemap.xml',     out: 'sitemap.xml' },
   { url: '/robots.txt',      out: 'robots.txt' },
   ...suits.map(s => ({ url: `/suits/${s.slug}`, out: `suits/${s.slug}/index.html` })),

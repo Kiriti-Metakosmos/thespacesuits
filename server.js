@@ -41,8 +41,8 @@ app.engine('hbs', engine({
       return 'TBD';
     },
     formatEVA: (hr) => hr ? `${hr} hours` : 'N/A',
-    nationLabel: (n) => ({ us: 'United States', soviet: 'Soviet / Russia', china: 'China' }[n] || n),
-    nationColor: (n) => ({ us: 'cyan', soviet: 'gold', china: 'purple' }[n] || 'paper'),
+    nationLabel: (n) => ({ us: 'United States', soviet: 'Soviet / Russia', china: 'China / CMSA', esa: 'Europe / ESA' }[n] || n),
+    nationColor: (n) => ({ us: 'cyan', soviet: 'gold', china: 'gold', esa: 'purple' }[n] || 'paper'),
     severityColor: (s) => ({ Critical: 'red', High: 'gold', Medium: 'paper3' }[s] || 'paper3'),
     truncate: (str, len) => str && str.length > len ? str.slice(0, len) + '…' : str,
     year: () => new Date().getFullYear(),
@@ -190,7 +190,7 @@ app.get('/roadmap', (req, res) => {
 
 // PROGRAMS
 app.get('/programs/:nation', (req, res) => {
-  const nations = { us: 'United States', soviet: 'Soviet / Russian', china: 'China' };
+  const nations = { us: 'United States', soviet: 'Soviet / Russian', china: 'China / CMSA', esa: 'Europe / ESA' };
   const nation = req.params.nation;
   if (!nations[nation]) return res.status(404).render('pages/404', { title: '404', meta: defaultMeta });
   const programSuits = suits.filter(s => s.nation === nation);

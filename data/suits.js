@@ -178,5 +178,99 @@ module.exports = [
     futureRelevance:"Still operating on ISS. Fleet-maintenance lessons directly inform all next-generation EVA design",
     color:"cyan",slug:"orlan-m",
     meta:{title:"Orlan-M EVA Spacesuit — ISS Russian Operations | The Spacesuits",description:"The Orlan-M rear-entry EVA suit used on the ISS Russian segment. 5.8 psi, 238 lb, 7-hour EVA. Higher pressure philosophy, fleet maintenance lessons, US EMU comparison."}
+  },
+
+  // CHINESE SUITS
+  {
+    id:"shenzhou-iva", variantId:"CN-001", name:"Shenzhou IVA / Rescue Suit", program:"Shenzhou", nation:"china",
+    agency:"CMSA / CNSA", manufacturer:"CASC", category:"IVA", era:"2003–present",
+    firstUse:2003, lastUse:null, status:"Active",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:null, systemMassLb:null,
+    lssPrimary:"Vehicle oxygen + emergency tanks", lssBackup:"Emergency oxygen", evaDurationHr:null,
+    missionUse:"Shenzhou launch, entry and cabin depressurization survival",
+    entryDonning:"One-piece soft pressure garment; integral helmet; vehicle-supported",
+    keySubsystem:"Emergency oxygen; automatic sealing; orange high-visibility; vehicle interface",
+    limitations:"Not EVA-capable; long-duration seated comfort secondary to emergency survival; donning speed under study",
+    programLesson:"Rescue suit discipline must be kept separate from EVA product line — do not overbuild IVA with EVA objectives",
+    futureRelevance:"Relevant to any commercial crew vehicle requiring low-mass cabin-supported rescue architecture",
+    color:"gold", slug:"shenzhou-iva",
+    meta:{title:"Shenzhou IVA Rescue Suit — Chinese Spacesuit 2003 | The Spacesuits", description:"China's Shenzhou IVA launch-entry rescue spacesuit. Worn since Yang Liwei's 2003 flight. Technical archive, subsystem analysis and engineering lessons."}
+  },
+  {
+    id:"feitian-gen1", variantId:"CN-002", name:"Feitian Gen-1", program:"Voskhod / Shenzhou VII", nation:"china",
+    agency:"CMSA / CNSA", manufacturer:"CASC", category:"EVA", era:"2008",
+    firstUse:2008, lastUse:2008, status:"Retired",
+    pressurePsi:null, pressureKpa:null, pressureHpa:400, massLb:null, systemMassLb:null,
+    lssPrimary:"Self-contained EVA backpack oxygen", lssBackup:"Airlock support", evaDurationHr:null,
+    missionUse:"China's first domestic EVA — Zhai Zhigang, Shenzhou VII 2008",
+    entryDonning:"Orlan-influenced semi-rigid rear-entry EVA architecture",
+    keySubsystem:"Fire and radiation-resistant materials; domestic sovereign EVA baseline; ~30m RMB cost reported",
+    limitations:"Limited operational cadence; not a mature fleet product; imported Haiying suit flew alongside as backup",
+    programLesson:"Pragmatic dual-track approach — import to reduce mission risk while demonstrating domestic capability simultaneously",
+    futureRelevance:"Validates China's sovereign EVA technology transition path; Feitian Gen-1 is to China what BERKUT was to the Soviets",
+    color:"gold", slug:"feitian-gen1",
+    meta:{title:"Feitian Gen-1 — China's First EVA Spacesuit 2008 | The Spacesuits", description:"The Feitian Gen-1 spacesuit worn by Zhai Zhigang on China's first spacewalk in 2008. Technical archive, Orlan-influenced architecture and engineering analysis."}
+  },
+  {
+    id:"feitian-gen2", variantId:"CN-003", name:"Feitian Gen-2 Tiangong", program:"Tiangong Station", nation:"china",
+    agency:"CMSA / CNSA", manufacturer:"CASC", category:"EVA", era:"2021–present",
+    firstUse:2021, lastUse:null, status:"Active fleet",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:287, systemMassLb:null,
+    lssPrimary:"Backpack PLSS — liquid cooling, oxygen, humidity, telemetry", lssBackup:"Station interfaces", evaDurationHr:7,
+    missionUse:"Tiangong station assembly, maintenance and external payload tasks",
+    entryDonning:"Second-generation EVA suit; white with colored crew-ID trims",
+    keySubsystem:"~130 kg; ~$4.14m unit cost; >7hr EVA; 15 uses/3 years standard — exceeded by 2025; liquid cooling; telemetry",
+    limitations:"Mass, dexterity, maintenance turnaround and consumables management are active watch items; lifespan now being extended",
+    programLesson:"Once a suit becomes a fleet asset, lifecycle economics and telemetry matter more than peak performance figures",
+    futureRelevance:"Active ISS-equivalent benchmark — China is building a sustained EVA operating model, not a demonstration capability",
+    color:"gold", slug:"feitian-gen2",
+    meta:{title:"Feitian Gen-2 — Tiangong Station EVA Suit 2021 | The Spacesuits", description:"China's Feitian Gen-2 operational EVA suit for Tiangong station. ~130 kg, 7-hour EVA, liquid cooling PLSS. Fleet operations, lifecycle data and engineering analysis."}
+  },
+  {
+    id:"wangyu", variantId:"CN-004", name:"Wangyu Lunar Suit", program:"Chinese Lunar Landing", nation:"china",
+    agency:"CMSA / CASC", manufacturer:"CASC", category:"EVA", era:"2024–2030",
+    firstUse:null, lastUse:null, status:"In development — pre-2030 target",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:null, systemMassLb:null,
+    lssPrimary:"Self-contained lunar PLSS (details not public)", lssBackup:"Not disclosed", evaDurationHr:null,
+    missionUse:"Chinese crewed lunar surface EVA — moonwalk, scientific exploration, Tansuo rover operations",
+    entryDonning:"Lightweight compact lunar-specific architecture; unveiled 2024; named Wangyu 2025",
+    keySubsystem:"Dust/thermal protective materials; panoramic glare-proof visor; flexible gloves; low-g joints; cameras; integrated control panel; Tansuo rover interface",
+    limitations:"Mass, pressure, PLSS margins, dust-seal life and recharge logistics not yet public; surface terrain validation pending",
+    programLesson:"Lunar suit must be treated as a new architecture branch — not an incremental Feitian derivative — due to dust, terrain and thermal differences",
+    futureRelevance:"Third nation pursuing crewed lunar surface capability. Wangyu + Tansuo rover is the first non-US/Soviet lunar surface system stack since Apollo",
+    color:"purple", slug:"wangyu",
+    meta:{title:"Wangyu — China's Lunar Spacesuit 2024 | The Spacesuits", description:"China's Wangyu lunar EVA suit unveiled 2024, named 2025. Target: crewed lunar landing before 2030. Technical analysis, dust/thermal architecture and comparison with Apollo A7L and AxEMU."}
+  },
+
+  // ESA SUITS
+  {
+    id:"eva-suit-2000", variantId:"ESA-001", name:"EVA Suit 2000", program:"ESA / RKA Joint Program", nation:"esa",
+    agency:"ESA + Russian Space Agency", manufacturer:"European industry + Russian heritage", category:"EVA", era:"1992–1995",
+    firstUse:null, lastUse:null, status:"Prototype only — never flown",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:null, systemMassLb:null,
+    lssPrimary:"Self-contained EVA life support concept", lssBackup:"Not operationalized", evaDurationHr:null,
+    missionUse:"Designed for ISS construction and maintenance EVA — never operationalized",
+    entryDonning:"Rear hatch entry; designed for ~2 minute donning in microgravity; adjustable-length arms and legs",
+    keySubsystem:"Hard-shell torso; rear-entry; modular adjustable limbs; rapid donning target; combined European technology with Russian operational experience",
+    limitations:"Program never progressed beyond prototype; now on display at ESTEC as a path not taken; parent program funding dependency caused cancellation",
+    programLesson:"Europe proved the rear-entry rapid-donning concept works — but without a funded anchor mission the architecture never matured",
+    futureRelevance:"Most relevant unflown EVA architecture in the European context — directly informs EuroSuit design principles and any future sovereign European EVA capability",
+    color:"purple", slug:"eva-suit-2000",
+    meta:{title:"EVA Suit 2000 — ESA European Spacesuit Prototype | The Spacesuits", description:"ESA and Russia's joint EVA Suit 2000 prototype from 1992-1995. Rear-entry hard torso, 2-minute donning target. The European EVA suit that never flew. Full technical archive."}
+  },
+  {
+    id:"eurosuit", variantId:"ESA-002", name:"EuroSuit IVA Prototype", program:"CNES / ESA εpsilon", nation:"esa",
+    agency:"CNES + ESA", manufacturer:"Spartan Space + MEDES + Decathlon", category:"IVA", era:"2024–present",
+    firstUse:2026, lastUse:null, status:"Active prototype — ISS tested 2026",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:null, systemMassLb:null,
+    lssPrimary:"Vehicle-supported — spacecraft interfaces", lssBackup:"Emergency oxygen", evaDurationHr:null,
+    missionUse:"Launch, landing and emergency alert phases — IVA crew safety",
+    entryDonning:"Autonomous don/doff target under 2 minutes; ergonomic design with commercial manufacturing",
+    keySubsystem:"Biomonitoring integration; rapid autonomous donning; human factors; Decathlon textile expertise; MEDES medical research; tested by Sophie Adenot on ISS during εpsilon 2026",
+    limitations:"Prototype not yet certified operational; not EVA-capable; full qualification path not yet public",
+    programLesson:"Non-traditional partners — sports equipment manufacturers, medical research institutes — can enter human spaceflight hardware through IVA rather than EVA",
+    futureRelevance:"The active European wedge into crewed spaceflight hardware. Biomonitoring, rapid donning and human factors are the European competitive advantage",
+    color:"purple", slug:"eurosuit",
+    meta:{title:"EuroSuit — European IVA Spacesuit Prototype 2026 | The Spacesuits", description:"EuroSuit IVA prototype by CNES, Spartan Space, Decathlon and MEDES. Tested by ESA astronaut Sophie Adenot on ISS in 2026 during εpsilon mission. European spacesuit technology analysis."}
   }
 ];
