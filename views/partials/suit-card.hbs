@@ -1,4 +1,8 @@
 <article class="db-card" itemscope itemtype="https://schema.org/Product">
+  {{#if (eq nation 'us')}}<span class="nation-flag" title="United States">🇺🇸</span>{{/if}}
+  {{#if (eq nation 'soviet')}}<span class="nation-flag" title="Soviet / Russia">🇷🇺</span>{{/if}}
+  {{#if (eq nation 'china')}}<span class="nation-flag" title="China">🇨🇳</span>{{/if}}
+  {{#if (eq nation 'esa')}}<span class="nation-flag" title="Europe / ESA">🇪🇺</span>{{/if}}
   <div class="db-card-top">
     <span class="db-card-id mono">{{variantId}}</span>
     <img src="/images/flags/{{nation}}.svg" alt="{{nationLabel nation}}" class="flag-icon" width="20" height="13" aria-hidden="true" style="vertical-align:middle;margin-left:0.4rem;border-radius:2px">
