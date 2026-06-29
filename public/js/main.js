@@ -1,3 +1,5 @@
+console.log('JS loaded');
+
 // Mobile menu toggle
 const burger = document.querySelector('.nav-burger');
 const mobileMenu = document.getElementById('mobileMenu');
