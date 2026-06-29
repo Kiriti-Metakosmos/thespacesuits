@@ -94,6 +94,7 @@ app.get('/database', (req, res) => {
   let filtered = suits;
   if (nation !== 'all') filtered = filtered.filter(s => s.nation === nation);
   if (category !== 'all') filtered = filtered.filter(s => s.category === category);
+  console.log(`[DB] nation=${nation} category=${category} results=${filtered.length}`);
   res.render('pages/database', {
     title: 'Suit Database — The Spacesuits',
     meta: {
