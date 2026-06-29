@@ -189,7 +189,7 @@ a{color:inherit}
 .timeline-wrap{position:relative;padding-left:3rem}
 .timeline-wrap::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border2)}
 .tl-item{position:relative;padding:0 0 3.5rem 2.5rem}
-.tl-item::before{content:'';position:absolute;left:-5px;top:5px;width:10px;height:10px;border-radius:50%}
+.tl-item::before{content:'';position:absolute;left:-5px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--dot-color,var(--cyan))}
 .tl-us::before{background:var(--cyan);box-shadow:0 0 8px rgba(0,200,215,.4)}
 .tl-ru::before{background:var(--gold);box-shadow:0 0 8px rgba(201,168,76,.4)}
 .tl-year{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;line-height:1;margin-bottom:.4rem}
@@ -258,6 +258,7 @@ a{color:inherit}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1200px){
+  .timeline-cols{grid-template-columns:1fr 1fr!important}
   .hero{grid-template-columns:1fr}.hero-right{display:none}
   .db-grid{grid-template-columns:1fr 1fr}
   .db-card:nth-child(3n){border-right:1px solid var(--border)}
@@ -278,6 +279,7 @@ a{color:inherit}
   .era-cell:nth-child(2n){border-right:none}
 }
 @media(max-width:768px){
+  .timeline-cols{grid-template-columns:1fr!important}
   .nav-links,.nav-actions{display:none}
   .nav-burger{display:flex}
   .era-strip,.db-grid,.data-strip{grid-template-columns:1fr}

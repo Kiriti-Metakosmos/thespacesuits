@@ -7,17 +7,17 @@
       <div class="filter-group">
         <span class="filter-label">Nation:</span>
         <a href="/database" class="filter-btn {{#if (eq nation 'all')}}active{{/if}}">All</a>
-        <a href="/database?nation=us{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'us')}}active cyan{{/if}}">US / NASA</a>
-        <a href="/database?nation=soviet{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'soviet')}}active gold{{/if}}">Soviet / Russia</a>
-        <a href="/database?nation=china{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'china')}}active gold{{/if}}">China / CMSA</a>
-        <a href="/database?nation=esa{{#if (eq category 'all')}}{{else}}&category={{category}}{{/if}}" class="filter-btn {{#if (eq nation 'esa')}}active purple{{/if}}">Europe / ESA</a>
+        <a href="/database?nation=us" class="filter-btn {{#if (eq nation 'us')}}active cyan{{/if}}">🇺🇸 US / NASA</a>
+        <a href="/database?nation=soviet" class="filter-btn {{#if (eq nation 'soviet')}}active gold{{/if}}">🇷🇺 Soviet / Russia</a>
+        <a href="/database?nation=china" class="filter-btn {{#if (eq nation 'china')}}active gold{{/if}}">🇨🇳 China / CMSA</a>
+        <a href="/database?nation=esa" class="filter-btn {{#if (eq nation 'esa')}}active purple{{/if}}">🇪🇺 Europe / ESA</a>
       </div>
       <div class="filter-group">
         <span class="filter-label">Category:</span>
-        <a href="/database{{#if (eq nation 'all')}}{{else}}?nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'all')}}active{{/if}}">All</a>
-        <a href="/database?category=IVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'IVA')}}active{{/if}}">IVA</a>
-        <a href="/database?category=IEVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'IEVA')}}active{{/if}}">IEVA</a>
-        <a href="/database?category=EVA{{#if (eq nation 'all')}}{{else}}&nation={{nation}}{{/if}}" class="filter-btn {{#if (eq category 'EVA')}}active{{/if}}">EVA</a>
+        <a href="/database" class="filter-btn {{#if (eq category 'all')}}active{{/if}}">All</a>
+        <a href="/database?category=IVA" class="filter-btn {{#if (eq category 'IVA')}}active{{/if}}">IVA</a>
+        <a href="/database?category=IEVA" class="filter-btn {{#if (eq category 'IEVA')}}active{{/if}}">IEVA</a>
+        <a href="/database?category=EVA" class="filter-btn {{#if (eq category 'EVA')}}active{{/if}}">EVA</a>
       </div>
     </div>
   </div>
