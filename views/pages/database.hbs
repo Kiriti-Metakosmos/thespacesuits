@@ -6,18 +6,18 @@
     <div class="filter-bar">
       <div class="filter-group">
         <span class="filter-label">Nation:</span>
-        <a href="/database" class="filter-btn {{#if (eq nation 'all')}}active{{/if}}">All</a>
-        <a href="/database?nation=us" class="filter-btn {{#if (eq nation 'us')}}active{{/if}}">US / NASA</a>
-        <a href="/database?nation=soviet" class="filter-btn {{#if (eq nation 'soviet')}}active{{/if}}">Soviet / Russia</a>
-        <a href="/database?nation=china" class="filter-btn {{#if (eq nation 'china')}}active{{/if}}">China / CMSA</a>
-        <a href="/database?nation=esa" class="filter-btn {{#if (eq nation 'esa')}}active{{/if}}">Europe / ESA</a>
+        <button class="filter-btn active" data-filter-nation="all">All</button>
+        <button class="filter-btn" data-filter-nation="us">US / NASA</button>
+        <button class="filter-btn" data-filter-nation="soviet">Soviet / Russia</button>
+        <button class="filter-btn" data-filter-nation="china">China / CMSA</button>
+        <button class="filter-btn" data-filter-nation="esa">Europe / ESA</button>
       </div>
       <div class="filter-group">
         <span class="filter-label">Category:</span>
-        <a href="/database" class="filter-btn {{#if (eq category 'all')}}active{{/if}}">All</a>
-        <a href="/database?category=IVA" class="filter-btn {{#if (eq category 'IVA')}}active{{/if}}">IVA</a>
-        <a href="/database?category=IEVA" class="filter-btn {{#if (eq category 'IEVA')}}active{{/if}}">IEVA</a>
-        <a href="/database?category=EVA" class="filter-btn {{#if (eq category 'EVA')}}active{{/if}}">EVA</a>
+        <button class="filter-btn active" data-filter-category="all">All</button>
+        <button class="filter-btn" data-filter-category="IVA">IVA</button>
+        <button class="filter-btn" data-filter-category="IEVA">IEVA</button>
+        <button class="filter-btn" data-filter-category="EVA">EVA</button>
       </div>
     </div>
   </div>

@@ -167,7 +167,7 @@ a{color:inherit}
 .filter-bar{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem}
 .filter-group{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .filter-label{font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--paper3)}
-.filter-btn{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid var(--border2);color:var(--paper3);text-decoration:none;transition:all .2s}
+.filter-btn{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.4rem .9rem;border:1px solid var(--border2);color:var(--paper3);text-decoration:none;transition:all .2s;background:transparent;cursor:pointer}
 .filter-btn:hover{border-color:var(--paper);color:var(--paper)}
 .filter-btn.active{background:var(--paper);color:var(--ink);border-color:var(--paper);font-weight:700}
 

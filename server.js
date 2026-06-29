@@ -89,12 +89,6 @@ app.get('/', (req, res) => {
 
 // DATABASE — all suits
 app.get('/database', (req, res) => {
-  const nation = req.query.nation || 'all';
-  const category = req.query.category || 'all';
-  let filtered = suits;
-  if (nation !== 'all') filtered = filtered.filter(s => s.nation === nation);
-  if (category !== 'all') filtered = filtered.filter(s => s.category === category);
-  console.log(`[DB] nation=${nation} category=${category} results=${filtered.length}`);
   res.render('pages/database', {
     title: 'Suit Database — The Spacesuits',
     meta: {
@@ -103,10 +97,8 @@ app.get('/database', (req, res) => {
       pageDescription: 'Complete spacesuit variant database. 40+ suits across US, Soviet and Russian programs. Filter by nation, category and era.',
       canonical: `${siteUrl}/database`
     },
-    suits: filtered,
-    nation,
-    category,
-    totalCount: filtered.length
+    suits,
+    totalCount: suits.length
   });
 });
 

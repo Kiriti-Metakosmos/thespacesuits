@@ -42,3 +42,45 @@ document.querySelectorAll('.share-copy').forEach(btn => {
     }, 2000);
   });
 });
+
+// Database filters
+const filterBtns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.db-card');
+let activeNation = 'all';
+let activeCategory = 'all';
+
+function applyFilters() {
+  let shown = 0;
+  cards.forEach(card => {
+    const nation = card.dataset.nation;
+    const category = card.dataset.category;
+    const nationMatch = activeNation === 'all' || nation === activeNation;
+    const categoryMatch = activeCategory === 'all' || category === activeCategory;
+    if (nationMatch && categoryMatch) {
+      card.style.display = '';
+      shown++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+  const counter = document.querySelector('.ss');
+  if (counter) counter.textContent = shown + ' suits displayed · filter by nation or category';
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const nation = btn.dataset.filterNation;
+    const category = btn.dataset.filterCategory;
+    if (nation !== undefined) {
+      activeNation = nation;
+      document.querySelectorAll('[data-filter-nation]').forEach(b => b.classList.remove('active'));
+    }
+    if (category !== undefined) {
+      activeCategory = category;
+      document.querySelectorAll('[data-filter-category]').forEach(b => b.classList.remove('active'));
+    }
+    btn.classList.add('active');
+    applyFilters();
+  });
+});
