@@ -26,6 +26,30 @@
     <img src="/images/suits/{{slug}}.jpg" alt="{{name}} spacesuit photograph" itemprop="image"
          style="display:block;width:100%;max-height:180px;object-fit:contain;background:#000" loading="lazy">
   </div>
+  {{else}}
+  <div style="background:#000;display:flex;align-items:center;justify-content:center;height:180px;overflow:hidden">
+    <svg width="72" height="168" viewBox="0 0 85 198" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" opacity=".35">
+      <ellipse cx="42" cy="28" rx="20" ry="24" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+      <path d="M25 22 Q42 18 59 22 L59 34 Q42 38 25 34Z" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.3)" stroke-width=".8"/>
+      <ellipse cx="42" cy="52" rx="14" ry="4" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+      <rect x="31" y="52" width="22" height="8" rx="2" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+      <path d="M20 60 Q18 92 19 128 L65 128 Q66 92 64 60Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.5)" stroke-width="1.4"/>
+      <rect x="30" y="80" width="24" height="20" rx="2" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.35)" stroke-width=".9"/>
+      <circle cx="38" cy="89" r="4.5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
+      <circle cx="50" cy="89" r="4.5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.4)" stroke-width=".7"/>
+      <path d="M20 63 Q8 84 7 112 L17 113 Q20 90 30 67Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>
+      <ellipse cx="12" cy="112" rx="6" ry="3.5" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.45)" stroke-width="1"/>
+      <path d="M64 63 Q76 84 77 112 L67 113 Q64 90 54 67Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>
+      <ellipse cx="72" cy="112" rx="6" ry="3.5" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.45)" stroke-width="1"/>
+      <rect x="20" y="128" width="44" height="9" rx="3" fill="rgba(255,255,255,.18)" stroke="rgba(255,255,255,.5)" stroke-width="1.2"/>
+      <path d="M23 137 L20 172 L34 172 L36 137Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>
+      <path d="M61 137 L64 172 L50 172 L48 137Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.4)" stroke-width="1.2"/>
+      <path d="M17 172 Q14 180 15 188 L40 188 L39 172Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+      <ellipse cx="27" cy="188" rx="13" ry="3.5" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.4)" stroke-width=".8"/>
+      <path d="M67 172 Q70 180 69 188 L44 188 L45 172Z" fill="rgba(255,255,255,.1)" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
+      <ellipse cx="57" cy="188" rx="13" ry="3.5" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.4)" stroke-width=".8"/>
+    </svg>
+  </div>
   {{/if}}
   <div class="db-card-body">
     <h3 class="db-card-name {{color}}" itemprop="name">{{name}}</h3>

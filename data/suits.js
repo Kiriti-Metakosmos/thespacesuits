@@ -259,6 +259,21 @@ module.exports = [
     meta:{title:"EVA Suit 2000 — ESA European Spacesuit Prototype | The Spacesuits", description:"ESA and Russia's joint EVA Suit 2000 prototype from 1992-1995. Rear-entry hard torso, 2-minute donning target. The European EVA suit that never flew. Full technical archive."}
   },
   {
+    id:"spacex-iva", variantId:"VAR-019", name:"SpaceX IVA Suit", program:"Commercial Crew / Dragon", nation:"us",
+    agency:"SpaceX", manufacturer:"SpaceX (in-house, designed by Jose Fernandez)", category:"IVA", era:"2017–present",
+    firstUse:2020, lastUse:null, status:"Active fleet",
+    pressurePsi:null, pressureKpa:null, pressureHpa:null, massLb:null, systemMassLb:null,
+    lssPrimary:"Vehicle-supplied via single umbilical connector", lssBackup:"Suit-integrated emergency oxygen", evaDurationHr:null,
+    missionUse:"Crew Dragon launch, entry and abort survival — Commercial Crew Program",
+    entryDonning:"Custom 3D body-scanned single-piece design; touchscreen-compatible gloves; integrated boots",
+    keySubsystem:"3D printed helmet; single umbilical connection point; flame-resistant outer layer; designed for aesthetics and function simultaneously by Hollywood costume designer Jose Fernandez",
+    limitations:"Not EVA-rated; limited public technical specification disclosure as a commercial proprietary design; mobility data not independently published",
+    programLesson:"Commercial crew programs can compress decades of incremental government suit evolution into a single clean-sheet design by prioritizing manufacturability and crew comfort from day one",
+    futureRelevance:"First fully commercial crew suit in operational service; establishes design language and manufacturing approach for the broader commercial spaceflight industry including future SpaceX EVA and Starship suits",
+    color:"cyan", slug:"spacex-iva",
+    meta:{title:"SpaceX IVA Spacesuit — Crew Dragon 2020 | The Spacesuits", description:"SpaceX's in-house IVA spacesuit for Crew Dragon missions. Designed by Jose Fernandez since 2017. Single-umbilical architecture, 3D printed helmet. Technical archive and commercial crew program analysis."}
+  },
+  {
     id:"eurosuit", variantId:"ESA-002", name:"EuroSuit IVA Prototype", program:"CNES / ESA εpsilon", nation:"esa",
     agency:"CNES + ESA", manufacturer:"Spartan Space + MEDES + Decathlon", category:"IVA", era:"2024–present",
     firstUse:2026, lastUse:null, status:"Active prototype — ISS tested 2026",
