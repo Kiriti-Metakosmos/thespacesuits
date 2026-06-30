@@ -201,6 +201,22 @@ app.get('/programs/:nation', (req, res) => {
   });
 });
 
+// PROTOTYPES
+app.get('/prototypes', (req, res) => {
+  const prototypeSuits = suits.filter(s => s.isPrototype === true);
+  res.render('pages/prototypes', {
+    title: 'Prototype & Experimental Suits — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'Prototype & Experimental Suits',
+      pageDescription: 'Pre-spaceflight research prototypes and experimental pressure suit programs. 16 experimental variants from 1956–1974 documented.',
+      canonical: `${siteUrl}/prototypes`
+    },
+    suits: prototypeSuits,
+    totalCount: prototypeSuits.length
+  });
+});
+
 // ABOUT
 app.get('/about', (req, res) => {
   res.render('pages/about', {
