@@ -89,6 +89,7 @@ app.get('/', (req, res) => {
 
 // DATABASE — all suits
 app.get('/database', (req, res) => {
+  const filtered = suits.slice().sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
   res.render('pages/database', {
     title: 'Suit Database — The Spacesuits',
     meta: {
@@ -97,8 +98,8 @@ app.get('/database', (req, res) => {
       pageDescription: 'Complete spacesuit variant database. 40+ suits across US, Soviet and Russian programs. Filter by nation, category and era.',
       canonical: `${siteUrl}/database`
     },
-    suits,
-    totalCount: suits.length
+    suits: filtered,
+    totalCount: filtered.length
   });
 });
 
