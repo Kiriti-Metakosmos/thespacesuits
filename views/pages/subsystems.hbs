@@ -5,11 +5,16 @@
 </div></div>
 <section class="section">
   <div class="db-grid">
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-gold">Gloves</span></div><h3 class="db-card-name gold">Gloves & Dexterity</h3><p class="db-lesson">Most persistent mission-limiting subsystem across all three programs. 12 development lines documented. Torque vs thermal paradox at finger-joint level remains unsolved.</p></div>
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-cyan">Helmets</span></div><h3 class="db-card-name c">Helmets & Visors</h3><p class="db-lesson">Visibility, thermal load, comms, dust contamination and maintainability. Helmet penetrations in dusty lunar environments proved consistently problematic across Apollo and concept studies.</p></div>
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-red">Life Support</span></div><h3 class="db-card-name red-text">Life Support / LSS</h3><p class="db-lesson">Vehicle-fed IVA vs umbilical EVA vs autonomous backpack. EVA-23 water intrusion (2013) proved contamination sensitivity is life-critical. Water loop management now rated P1 priority.</p></div>
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-cyan">Torso</span></div><h3 class="db-card-name c">Torso & Entry Systems</h3><p class="db-lesson">Front vs rear-entry architecture. Soviets pioneered rear-entry from KRECHET (1967) through Orlan. US adopted modular HUT from Shuttle EMU. Rear-entry enables solo donning — critical for planetary surface ops.</p></div>
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-purple">Mobility</span></div><h3 class="db-card-name purple">Mobility Joints</h3><p class="db-lesson">Link-net restraint (IVA ideal, EVA insufficient) to hard-bearing modular joints. Soviet and US programs independently converged on convolute→hard-bearing progression. Partial-gravity mobility remains under-characterized.</p></div>
-    <div class="db-card"><div class="db-card-top"><span class="tag tag-green">Thermal</span></div><h3 class="db-card-name green">Thermal & Materials</h3><p class="db-lesson">LCG became mandatory post-Apollo as EVA duration increased. Dust, cold shadow, and hot-sun regimes simultaneously present at lunar south pole. Modular outer layers and self-cleaning concepts needed.</p></div>
+    {{#each subsystems}}
+    <div class="db-card">
+      <div class="db-card-top"><span class="tag tag-{{color}}">{{label}}</span></div>
+      <h3 class="db-card-name {{color}}">{{label}}</h3>
+      <p class="db-lesson">{{description}}</p>
+      <div class="mono" style="font-size:.68rem;color:var(--paper3);margin-top:.9rem;line-height:1.6">
+        <span style="color:var(--paper2)">{{count}} suits tagged —</span>
+        {{#each examples}}<a href="/suits/{{slug}}" style="color:var(--cyan);text-decoration:none">{{name}}</a>{{#unless @last}}, {{/unless}}{{/each}}
+      </div>
+    </div>
+    {{/each}}
   </div>
 </section>

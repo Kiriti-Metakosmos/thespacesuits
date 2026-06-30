@@ -206,7 +206,11 @@ module.exports = [
     "meta": {
       "title": "Mercury IVA Spacesuit — NASA 1961 | The Spacesuits",
       "description": "Technical archive of the Mercury IVA spacesuit. 3.7 psi, 22 lb, vehicle-fed. First US manned spacesuit by B.F. Goodrich. Engineering specs, failure modes and lessons."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "helmet"
+    ]
   },
   {
     "id": "sk-1",
@@ -240,7 +244,11 @@ module.exports = [
     "meta": {
       "title": "SK-1 Soviet Spacesuit — Gagarin's Vostok 1961 | The Spacesuits",
       "description": "Gagarin's spacesuit. SK-1 and SK-2 Vostok IVA rescue suits by Zvezda. 300 hPa. Full technical archive including Tereshkova's SK-2 female adaptation and engineering lessons."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "helmet"
+    ]
   },
   {
     "id": "spd-143",
@@ -449,7 +457,11 @@ module.exports = [
     "meta": {
       "title": "Gemini G4C Spacesuit — America's First EVA 1965 | The Spacesuits",
       "description": "The suit Ed White wore on America's first spacewalk. 3.7 psi, 41.75 lb system mass, VCM umbilical. Failure analysis, EVA productivity lessons, full technical data."
-    }
+    },
+    "subsystemTags": [
+      "gloves",
+      "mobility"
+    ]
   },
   {
     "id": "berkut",
@@ -483,7 +495,12 @@ module.exports = [
     "meta": {
       "title": "BERKUT — World's First EVA Spacesuit 1965 | The Spacesuits",
       "description": "The spacesuit Alexei Leonov wore for humanity's first spacewalk. BERKUT technical archive: 400 hPa, KP-55 backpack, the near-fatal ballooning incident and its engineering legacy."
-    }
+    },
+    "subsystemTags": [
+      "mobility",
+      "gloves",
+      "helmet"
+    ]
   },
   {
     "id": "rx3-mol",
@@ -692,7 +709,13 @@ module.exports = [
     "meta": {
       "title": "Apollo A7L Spacesuit — Moon Landing 1969 | The Spacesuits",
       "description": "Neil Armstrong and Buzz Aldrin's lunar suit. 201 lb with PLSS-6, 6-hour EVA, 3.7 psi. Full technical specs, subsystem breakdown, engineering lessons from the Moon program."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "helmet"
+    ]
   },
   {
     "id": "apollo-a7lb",
@@ -726,7 +749,13 @@ module.exports = [
     "meta": {
       "title": "Apollo A7LB Spacesuit — Extended Lunar EVA | The Spacesuits",
       "description": "The upgraded lunar suit for Apollo 15-17 J-missions. 212 lb with PLSS-7, 7-hour EVA, lunar rover compatibility. Extended traverse and exploration capability analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "mobility"
+    ]
   },
   {
     "id": "krechet",
@@ -760,7 +789,11 @@ module.exports = [
     "meta": {
       "title": "KRECHET — Soviet Lunar Spacesuit Never Flown | The Spacesuits",
       "description": "The Soviet answer to Apollo's A7L. KRECHET semi-rigid rear-entry lunar EVA suit. 400 hPa, L-3 program. How the cancelled Soviet Moon program shaped all modern EVA architecture."
-    }
+    },
+    "subsystemTags": [
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "ax3-ames",
@@ -829,7 +862,11 @@ module.exports = [
     "meta": {
       "title": "Sokol KV-2 — Soyuz Rescue Spacesuit | The Spacesuits",
       "description": "The Sokol KV-2 IVA rescue suit still worn on every Soyuz mission today. 400 hPa, Zvezda manufacture. Technical archive, 40-year service history, upgrade lessons."
-    }
+    },
+    "subsystemTags": [
+      "torso-entry",
+      "helmet"
+    ]
   },
   {
     "id": "shuttle-emu",
@@ -863,7 +900,14 @@ module.exports = [
     "meta": {
       "title": "Shuttle EMU Spacesuit — Orbital EVA 1983 | The Spacesuits",
       "description": "The EMU that built the ISS. 254 lb with PLSS, 8-hour EVA, 4.3 psi. Modular hard torso architecture, MMU compatibility, full technical archive and failure analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "eva-suit-2000",
@@ -897,7 +941,11 @@ module.exports = [
     "meta": {
       "title": "EVA Suit 2000 — ESA European Spacesuit Prototype | The Spacesuits",
       "description": "ESA and Russia's joint EVA Suit 2000 prototype from 1992-1995. Rear-entry hard torso, 2-minute donning target. The European EVA suit that never flew. Full technical archive."
-    }
+    },
+    "subsystemTags": [
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "orlan-m",
@@ -931,7 +979,12 @@ module.exports = [
     "meta": {
       "title": "Orlan-M EVA Spacesuit — ISS Russian Operations | The Spacesuits",
       "description": "The Orlan-M rear-entry EVA suit used on the ISS Russian segment. 5.8 psi, 238 lb, 7-hour EVA. Higher pressure philosophy, fleet maintenance lessons, US EMU comparison."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "enhanced-emu",
@@ -965,7 +1018,14 @@ module.exports = [
     "meta": {
       "title": "Enhanced EMU — ISS EVA Suit 1998-Present | The Spacesuits",
       "description": "The ISS workhorse. 309 lb system, 8-hour EVA. EVA-23 Parmitano water intrusion incident, OIG 2025 critical warnings, aging fleet crisis. Full technical and failure archive."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "shenzhou-iva",
@@ -999,7 +1059,10 @@ module.exports = [
     "meta": {
       "title": "Shenzhou IVA Rescue Suit — Chinese Spacesuit 2003 | The Spacesuits",
       "description": "China's Shenzhou IVA launch-entry rescue spacesuit. Worn since Yang Liwei's 2003 flight. Technical archive, subsystem analysis and engineering lessons."
-    }
+    },
+    "subsystemTags": [
+      "life-support"
+    ]
   },
   {
     "id": "feitian-gen1",
@@ -1033,7 +1096,11 @@ module.exports = [
     "meta": {
       "title": "Feitian Gen-1 — China's First EVA Spacesuit 2008 | The Spacesuits",
       "description": "The Feitian Gen-1 spacesuit worn by Zhai Zhigang on China's first spacewalk in 2008. Technical archive, Orlan-influenced architecture and engineering analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "mobility"
+    ]
   },
   {
     "id": "boeing-starliner",
@@ -1067,7 +1134,10 @@ module.exports = [
     "meta": {
       "title": "Boeing Starliner Spacesuit — CST-100 Commercial Crew | The Spacesuits",
       "description": "Boeing’s IVA spacesuit for CST-100 Starliner, built with David Clark Company. Commercial Crew Program suit. Technical archive and comparison with SpaceX IVA design."
-    }
+    },
+    "subsystemTags": [
+      "life-support"
+    ]
   },
   {
     "id": "spacex-iva",
@@ -1101,7 +1171,10 @@ module.exports = [
     "meta": {
       "title": "SpaceX IVA Spacesuit — Crew Dragon 2020 | The Spacesuits",
       "description": "SpaceX's in-house IVA spacesuit for Crew Dragon missions. Designed by Jose Fernandez since 2017. Single-umbilical architecture, 3D printed helmet. Technical archive and commercial crew program analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support"
+    ]
   },
   {
     "id": "xemu",
@@ -1135,7 +1208,14 @@ module.exports = [
     "meta": {
       "title": "xEMU — NASA's Cancelled Lunar Suit | The Spacesuits",
       "description": "NASA's xEMU lunar exploration suit, cancelled in 2022 after mass overrun. 8.2 psi operating pressure, highest of any US design. Full failure analysis and program lessons."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "feitian-gen2",
@@ -1169,7 +1249,13 @@ module.exports = [
     "meta": {
       "title": "Feitian Gen-2 — Tiangong Station EVA Suit 2021 | The Spacesuits",
       "description": "China's Feitian Gen-2 operational EVA suit for Tiangong station. ~130 kg, 7-hour EVA, liquid cooling PLSS. Fleet operations, lifecycle data and engineering analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "mobility",
+      "thermal"
+    ]
   },
   {
     "id": "axemu",
@@ -1203,7 +1289,14 @@ module.exports = [
     "meta": {
       "title": "AxEMU — Axiom Space Artemis Lunar Suit | The Spacesuits",
       "description": "Axiom Space's commercial lunar EVA suit for NASA Artemis III south-pole mission. Full anthropometric coverage, dust tolerance design. Current qualification status and technical analysis."
-    }
+    },
+    "subsystemTags": [
+      "life-support",
+      "gloves",
+      "thermal",
+      "torso-entry",
+      "mobility"
+    ]
   },
   {
     "id": "wangyu",
@@ -1237,7 +1330,12 @@ module.exports = [
     "meta": {
       "title": "Wangyu — China's Lunar Spacesuit 2024 | The Spacesuits",
       "description": "China's Wangyu lunar EVA suit unveiled 2024, named 2025. Target: crewed lunar landing before 2030. Technical analysis, dust/thermal architecture and comparison with Apollo A7L and AxEMU."
-    }
+    },
+    "subsystemTags": [
+      "thermal",
+      "mobility",
+      "helmet"
+    ]
   },
   {
     "id": "eurosuit",
@@ -1271,6 +1369,9 @@ module.exports = [
     "meta": {
       "title": "EuroSuit — European IVA Spacesuit Prototype 2026 | The Spacesuits",
       "description": "EuroSuit IVA prototype by CNES, Spartan Space, Decathlon and MEDES. Tested by ESA astronaut Sophie Adenot on ISS in 2026 during εpsilon mission. European spacesuit technology analysis."
-    }
+    },
+    "subsystemTags": [
+      "torso-entry"
+    ]
   }
 ];

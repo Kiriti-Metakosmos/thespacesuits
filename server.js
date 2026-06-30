@@ -76,6 +76,7 @@ const defaultMeta = {
 app.get('/', (req, res) => {
   const featured = suits.filter(s => ['apollo-a7l','berkut','enhanced-emu','orlan-m'].includes(s.id));
   const criticalFailures = failures.filter(f => f.severity === 'Critical').slice(0, 4);
+  const nations = [...new Set(suits.map(s => s.nation))];
   res.render('pages/home', {
     title: defaultMeta.defaultTitle,
     meta: { ...defaultMeta, canonical: siteUrl },
@@ -83,7 +84,8 @@ app.get('/', (req, res) => {
     featured,
     criticalFailures,
     totalSuits: suits.length,
-    totalFailures: failures.length
+    totalFailures: failures.length,
+    totalNations: nations.length
   });
 });
 
@@ -108,7 +110,17 @@ app.get('/suits/:slug', (req, res) => {
   const suit = suits.find(s => s.slug === req.params.slug);
   if (!suit) return res.status(404).render('pages/404', { title: '404 — The Spacesuits', meta: defaultMeta });
   const related = suits.filter(s => s.id !== suit.id && s.nation === suit.nation).slice(0, 3);
-  const suitFailures = failures.filter(f => f.program.toLowerCase().includes(suit.program.toLowerCase()) || f.program.toLowerCase().includes(suit.name.split(' ')[0].toLowerCase()));
+  const suitFailures = failures.filter(f => {
+    // Program name substring match (existing)
+    if (f.program.toLowerCase().includes(suit.program.toLowerCase())) return true;
+    if (f.program.toLowerCase().includes(suit.name.split(' ')[0].toLowerCase())) return true;
+    // Nation-scoped failures for China and ESA (program-level entries)
+    if (['china', 'esa'].includes(suit.nation) && f.nation === suit.nation) return true;
+    // Subsystem tag overlap
+    if (suit.subsystemTags && suit.subsystemTags.some(tag =>
+      f.subsystem && f.subsystem.toLowerCase().includes(tag.replace('-', ' ')))) return true;
+    return false;
+  });
   res.render('suits/detail', {
     title: suit.meta.title,
     meta: {
@@ -145,6 +157,9 @@ app.get('/failures', (req, res) => {
 
 // TIMELINE
 app.get('/timeline', (req, res) => {
+  const nonProto = suits.filter(s => !s.isPrototype);
+  const byNation = (n) => nonProto.filter(s => s.nation === n)
+    .sort((a, b) => (a.firstUse || 2030) - (b.firstUse || 2030));
   res.render('pages/timeline', {
     title: 'Program Timeline — The Spacesuits',
     meta: {
@@ -152,12 +167,38 @@ app.get('/timeline', (req, res) => {
       pageTitle: 'Development Timeline',
       pageDescription: '70 years of spacesuit development from 1931 Soviet pre-space era to Artemis AxEMU. US and Soviet programs in parallel chronology.',
       canonical: `${siteUrl}/timeline`
-    }
+    },
+    usTimeline:     byNation('us'),
+    sovietTimeline: byNation('soviet'),
+    chinaTimeline:  byNation('china'),
+    esaTimeline:    byNation('esa')
   });
 });
 
 // SUBSYSTEMS
 app.get('/subsystems', (req, res) => {
+  const SUB_DEFS = [
+    { tag:'gloves',       label:'Gloves & Dexterity',      color:'gold',
+      description:'Most persistent mission-limiting subsystem across all three programs. 12 development lines documented. Torque vs thermal paradox at finger-joint level remains unsolved.' },
+    { tag:'helmet',       label:'Helmets & Visors',         color:'cyan',
+      description:'Visibility, thermal load, comms, dust contamination and maintainability. Helmet penetrations in dusty lunar environments proved consistently problematic across Apollo and concept studies.' },
+    { tag:'life-support', label:'Life Support / LSS',        color:'red',
+      description:'Vehicle-fed IVA vs umbilical EVA vs autonomous backpack. EVA-23 water intrusion (2013) proved contamination sensitivity is life-critical. Water loop management now rated P1 priority.' },
+    { tag:'torso-entry',  label:'Torso & Entry Systems',     color:'cyan',
+      description:'Front vs rear-entry architecture. Soviets pioneered rear-entry from KRECHET (1967) through Orlan. US adopted modular HUT from Shuttle EMU. Rear-entry enables solo donning — critical for planetary surface ops.' },
+    { tag:'mobility',     label:'Mobility Joints',           color:'purple',
+      description:'Link-net restraint (IVA ideal, EVA insufficient) to hard-bearing modular joints. Soviet and US programs independently converged on convolute→hard-bearing progression. Partial-gravity mobility remains under-characterised.' },
+    { tag:'thermal',      label:'Thermal & Materials',       color:'green',
+      description:'LCG became mandatory post-Apollo as EVA duration increased. Dust, cold shadow, and hot-sun regimes simultaneously present at lunar south pole. Modular outer layers and self-cleaning concepts needed.' },
+  ];
+  const subsystems = SUB_DEFS.map(def => {
+    const tagged = suits.filter(s => s.subsystemTags && s.subsystemTags.includes(def.tag));
+    return {
+      ...def,
+      count: tagged.length,
+      examples: tagged.slice(0, 3).map(s => ({ name: s.name, slug: s.slug }))
+    };
+  });
   res.render('pages/subsystems', {
     title: 'Subsystem Analysis — The Spacesuits',
     meta: {
@@ -165,12 +206,40 @@ app.get('/subsystems', (req, res) => {
       pageTitle: 'Subsystem Analysis',
       pageDescription: '16 spacesuit subsystems traced across 70 years: gloves, helmets, life support, mobility joints, thermal, torso entry and more.',
       canonical: `${siteUrl}/subsystems`
-    }
+    },
+    subsystems
   });
 });
 
 // ROADMAP
 app.get('/roadmap', (req, res) => {
+  const PRIORITIES = [
+    { tag:'gloves',          priority:'P1', priorityLabel:'Critical', color:'red',
+      label:'Gloves & Dexterity',
+      description:'Hand fatigue, contact injury, cold-object handling and sizing remain the most persistent mission limiter across every program on record.',
+      h1:'Digital fit library; instrumented torque testing; TMG swap simplification',
+      h2:'Active assistance / smart restraint concepts; improved maintainability' },
+    { tag:'life-support',    priority:'P1', priorityLabel:'Critical', color:'red',
+      label:'Life Support / Water Loop',
+      description:'EVA-23 (2013) demonstrated contamination sensitivity is life-critical, not a nuisance. Separator blockage allowed free water into Parmitano\'s helmet.',
+      h1:'Redesign separator; add free-water detection; emergency helmet management',
+      h2:'Modular contamination-tolerant water processing; easier on-orbit maintenance' },
+    { tag:'mass-integration', priority:'P1', priorityLabel:'Critical', color:'red',
+      label:'Mass / Vehicle Integration',
+      description:'xEMU failure demonstrated exploration suit feasibility can collapse on mass allocation alone, not hardware performance.',
+      h1:'Lock mass budgets at subsystem level before elaboration; live allocation model',
+      h2:null },
+    { tag:'supply-chain',    priority:'P2', priorityLabel:'High',     color:'gold',
+      label:'Supply Chain / Digital Thread',
+      description:'Aging Enhanced EMU fleet showed industrial-base fragility can become mission risk independent of hardware condition. OIG 2025 critical flag.',
+      h1:'Map critical parts, alternate suppliers, refurbishment bottlenecks',
+      h2:'Digital lifecycle traceability with predictive maintenance metrics' },
+  ];
+  const roadmapPriorities = PRIORITIES.map(p => ({
+    ...p,
+    cases: failures.filter(f => f.roadmapTag === p.tag),
+    suitCount: suits.filter(s => s.subsystemTags && s.subsystemTags.includes(p.tag)).length
+  }));
   res.render('pages/roadmap', {
     title: 'Development Roadmap — The Spacesuits',
     meta: {
@@ -178,7 +247,8 @@ app.get('/roadmap', (req, res) => {
       pageTitle: 'Development Roadmap',
       pageDescription: 'Priority spacesuit subsystem improvements for 0–3yr, 3–7yr and 7yr+ horizons. Synthesized from 70 years of US and Soviet operational data.',
       canonical: `${siteUrl}/roadmap`
-    }
+    },
+    roadmapPriorities
   });
 });
 

@@ -5,9 +5,31 @@
 </div></div>
 <section class="section">
   <div class="failure-preview-grid" style="grid-template-columns:1fr 1fr">
-    <div class="failure-preview-card"><div class="fp-header"><span class="tag tag-red">P1 · Critical</span></div><div class="fp-program">Gloves</div><p class="fp-failure">Hand fatigue, contact injury, cold-object handling and sizing remain the most persistent mission limiter across every program on record.</p><div class="fp-header" style="margin-top:1rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">0–3yr</span></div><p class="fp-lesson">Digital fit library; instrumented torque testing; TMG swap simplification</p><div class="fp-header" style="margin-top:.75rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">3–7yr</span></div><p class="fp-lesson">Active assistance / smart restraint concepts; improved maintainability</p></div>
-    <div class="failure-preview-card"><div class="fp-header"><span class="tag tag-red">P1 · Critical</span></div><div class="fp-program">Life Support / Water Loop</div><p class="fp-failure">EVA-23 (2013) demonstrated contamination sensitivity is life-critical, not a nuisance. Separator blockage allowed free water into Parmitano's helmet.</p><div class="fp-header" style="margin-top:1rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">0–3yr</span></div><p class="fp-lesson">Redesign separator; add free-water detection; emergency helmet management</p><div class="fp-header" style="margin-top:.75rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">3–7yr</span></div><p class="fp-lesson">Modular contamination-tolerant water processing; easier on-orbit maintenance</p></div>
-    <div class="failure-preview-card"><div class="fp-header"><span class="tag tag-red">P1 · Critical</span></div><div class="fp-program">Mass / Vehicle Integration</div><p class="fp-failure">xEMU failure demonstrated exploration suit feasibility can collapse on mass allocation alone, not hardware performance.</p><div class="fp-header" style="margin-top:1rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">0–3yr</span></div><p class="fp-lesson">Lock mass budgets at subsystem level before elaboration; live allocation model</p></div>
-    <div class="failure-preview-card"><div class="fp-header"><span class="tag tag-gold">P2 · High</span></div><div class="fp-program">Supply Chain / Digital Thread</div><p class="fp-failure">Aging Enhanced EMU fleet showed industrial-base fragility can become mission risk independent of hardware condition. OIG 2025 critical flag.</p><div class="fp-header" style="margin-top:1rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">0–3yr</span></div><p class="fp-lesson">Map critical parts, alternate suppliers, refurbishment bottlenecks</p><div class="fp-header" style="margin-top:.75rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">3–7yr</span></div><p class="fp-lesson">Digital lifecycle traceability with predictive maintenance metrics</p></div>
+    {{#each roadmapPriorities}}
+    <div class="failure-preview-card">
+      <div class="fp-header">
+        <span class="tag tag-{{color}}">{{priority}} · {{priorityLabel}}</span>
+        <span class="mono" style="font-size:.62rem;color:var(--paper3)">{{suitCount}} suits</span>
+      </div>
+      <div class="fp-program">{{label}}</div>
+      <p class="fp-failure">{{description}}</p>
+      {{#if cases.length}}
+      <div style="margin-top:.75rem;padding:.6rem .75rem;background:rgba(255,255,255,.03);border-left:2px solid rgba(255,255,255,.1)">
+        <div class="mono" style="font-size:.58rem;color:var(--paper3);letter-spacing:.08em;margin-bottom:.4rem">LINKED FAILURE CASES</div>
+        {{#each cases}}
+        <div style="font-size:.72rem;margin-top:.35rem;color:var(--paper2)">
+          <span class="mono" style="color:var(--paper3)">{{id}}</span> — {{truncate failure 90}}
+        </div>
+        {{/each}}
+      </div>
+      {{/if}}
+      <div class="fp-header" style="margin-top:1rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">0–3yr</span></div>
+      <p class="fp-lesson">{{h1}}</p>
+      {{#if h2}}
+      <div class="fp-header" style="margin-top:.75rem"><span style="font-family:'Space Mono',monospace;font-size:.62rem;color:var(--cyan)">3–7yr</span></div>
+      <p class="fp-lesson">{{h2}}</p>
+      {{/if}}
+    </div>
+    {{/each}}
   </div>
 </section>
