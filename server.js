@@ -5,6 +5,7 @@ const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
 
+const { SITE_URL } = require('./config/site');
 const suits = require('./data/suits');
 const failures = require('./data/failures');
 
@@ -60,7 +61,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // ── SEO helpers ─────────────────────────────────────────────────
-const siteUrl = 'https://thespacesuits.com';
+const siteUrl = SITE_URL;
 const defaultMeta = {
   siteName: 'The Spacesuits',
   siteUrl,
