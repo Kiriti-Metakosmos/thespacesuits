@@ -309,24 +309,26 @@ app.get('/about', (req, res) => {
 // SITEMAP
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
-  const suitUrls = suits.map(s => `
-  <url>
-    <loc>${siteUrl}/suits/${s.slug}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`).join('');
+  const today = new Date().toISOString().slice(0, 10);
+  const staticUrls = [
+    `${siteUrl}/`,
+    `${siteUrl}/database`,
+    `${siteUrl}/failures`,
+    `${siteUrl}/timeline`,
+    `${siteUrl}/subsystems`,
+    `${siteUrl}/roadmap`,
+    `${siteUrl}/prototypes`,
+    `${siteUrl}/programs/us`,
+    `${siteUrl}/programs/soviet`,
+    `${siteUrl}/programs/china`,
+    `${siteUrl}/programs/esa`,
+    `${siteUrl}/about`,
+  ].map(loc => `\n  <url><loc>${loc}</loc><lastmod>${today}</lastmod></url>`).join('');
+  const suitUrls = suits.map(s =>
+    `\n  <url><loc>${siteUrl}/suits/${s.slug}</loc><lastmod>${today}</lastmod></url>`
+  ).join('');
   res.send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${siteUrl}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>${siteUrl}/database</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>${siteUrl}/failures</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/timeline</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/subsystems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/roadmap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/programs/us</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/programs/soviet</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  ${suitUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${suitUrls}
 </urlset>`);
 });
 
