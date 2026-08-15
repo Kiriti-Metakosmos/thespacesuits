@@ -71,6 +71,29 @@ const defaultMeta = {
   defaultImage: `${siteUrl}/images/og-default.jpg`
 };
 
+// ── JSON-LD helpers ─────────────────────────────────────────
+const firstSuitYear = Math.min(...suits.filter(s => s.firstUse).map(s => s.firstUse));
+const jsonLdTag = (obj) => `<script type="application/ld+json">${JSON.stringify(obj)}</script>`;
+const orgNode = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Metakosmos Group',
+  url: siteUrl,
+  sameAs: [
+    'https://x.com/MetakosmosOrg',
+    'https://www.linkedin.com/company/spacesuits-com/',
+    'https://www.youtube.com/@metakosmos'
+  ]
+};
+const breadcrumbLd = (canonical, label) => jsonLdTag({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: label, item: canonical }
+  ]
+});
+
 // ── Routes ───────────────────────────────────────────────────────
 
 // HOME
@@ -88,7 +111,18 @@ app.get('/', (req, res) => {
     totalFailures: failures.length,
     totalNations: nations.length,
     usSuitCount: suits.filter(s => s.nation === 'us').length,
-    sovietSuitCount: suits.filter(s => s.nation === 'soviet').length
+    sovietSuitCount: suits.filter(s => s.nation === 'soviet').length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@graph': [orgNode, {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        name: 'The Spacesuits',
+        url: siteUrl,
+        description: defaultMeta.defaultDescription,
+        publisher: { '@id': `${siteUrl}/#organization` }
+      }]
+    })
   });
 });
 
@@ -104,7 +138,18 @@ app.get('/database', (req, res) => {
       canonical: `${siteUrl}/database`
     },
     suits: filtered,
-    totalCount: filtered.length
+    totalCount: filtered.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      '@id': `${siteUrl}/database`,
+      name: 'Spacesuit Variant Database',
+      description: `Complete spacesuit variant database. ${suits.length} suits documented across US, Soviet, Russian, Chinese and European programs.`,
+      url: `${siteUrl}/database`,
+      creator: { '@id': `${siteUrl}/#organization` },
+      numberOfItems: suits.length,
+      temporalCoverage: `${firstSuitYear}/${new Date().getFullYear()}`
+    })
   });
 });
 
@@ -135,7 +180,29 @@ app.get('/suits/:slug', (req, res) => {
       ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
     },
     related,
-    suitFailures
+    suitFailures,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'TechArticle',
+          '@id': `${siteUrl}/suits/${suit.slug}#article`,
+          headline: suit.meta.title,
+          description: suit.meta.description,
+          url: `${siteUrl}/suits/${suit.slug}`,
+          publisher: { '@id': `${siteUrl}/#organization` },
+          datePublished: '2026-06-28'
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+            { '@type': 'ListItem', position: 3, name: suit.name, item: `${siteUrl}/suits/${suit.slug}` }
+          ]
+        }
+      ]
+    })
   });
 });
 
@@ -154,7 +221,8 @@ app.get('/failures', (req, res) => {
     },
     failures: filtered,
     severity,
-    totalCount: filtered.length
+    totalCount: filtered.length,
+    jsonLd: breadcrumbLd(`${siteUrl}/failures`, 'Failure Cases')
   });
 });
 
@@ -174,7 +242,8 @@ app.get('/timeline', (req, res) => {
     usTimeline:     byNation('us'),
     sovietTimeline: byNation('soviet'),
     chinaTimeline:  byNation('china'),
-    esaTimeline:    byNation('esa')
+    esaTimeline:    byNation('esa'),
+    jsonLd: breadcrumbLd(`${siteUrl}/timeline`, 'Development Timeline')
   });
 });
 
@@ -210,7 +279,8 @@ app.get('/subsystems', (req, res) => {
       pageDescription: '16 spacesuit subsystems traced across 70 years: gloves, helmets, life support, mobility joints, thermal, torso entry and more.',
       canonical: `${siteUrl}/subsystems`
     },
-    subsystems
+    subsystems,
+    jsonLd: breadcrumbLd(`${siteUrl}/subsystems`, 'Subsystem Analysis')
   });
 });
 
@@ -251,7 +321,8 @@ app.get('/roadmap', (req, res) => {
       pageDescription: 'Priority spacesuit subsystem improvements for 0–3yr, 3–7yr and 7yr+ horizons. Synthesized from 70 years of US and Soviet operational data.',
       canonical: `${siteUrl}/roadmap`
     },
-    roadmapPriorities
+    roadmapPriorities,
+    jsonLd: breadcrumbLd(`${siteUrl}/roadmap`, 'Development Roadmap')
   });
 });
 
@@ -271,7 +342,8 @@ app.get('/programs/:nation', (req, res) => {
     },
     nation,
     nationLabel: nations[nation],
-    programSuits
+    programSuits,
+    jsonLd: breadcrumbLd(`${siteUrl}/programs/${nation}`, `${nations[nation]} Spacesuit Program`)
   });
 });
 
@@ -287,7 +359,8 @@ app.get('/prototypes', (req, res) => {
       canonical: `${siteUrl}/prototypes`
     },
     suits: prototypeSuits,
-    totalCount: prototypeSuits.length
+    totalCount: prototypeSuits.length,
+    jsonLd: breadcrumbLd(`${siteUrl}/prototypes`, 'Prototype & Experimental Suits')
   });
 });
 
