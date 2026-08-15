@@ -468,6 +468,11 @@ app.get('/robots.txt', (req, res) => {
   res.send(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml`);
 });
 
+// Pre-rendered 404 page (200 so build.js can capture it; Azure serves with 404 via responseOverrides)
+app.get('/404', (req, res) => {
+  res.render('pages/404', { title: '404 — Page Not Found | The Spacesuits', meta: defaultMeta });
+});
+
 // 404
 app.use((req, res) => {
   res.status(404).render('pages/404', { title: '404 — The Spacesuits', meta: defaultMeta });

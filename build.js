@@ -32,6 +32,7 @@ const ROUTES = [
   { url: '/prototypes',      out: 'prototypes/index.html' },
   { url: '/sitemap.xml',     out: 'sitemap.xml' },
   { url: '/robots.txt',      out: 'robots.txt' },
+  { url: '/404',             out: '404/index.html' },
   ...suits.map(s => ({ url: `/suits/${s.slug}`, out: `suits/${s.slug}/index.html` })),
 ];
 
@@ -76,6 +77,13 @@ async function build() {
   if (fs.existsSync(publicDir)) {
     copyDir(publicDir, DIST);
     console.log(`\n  ✓  public/ → dist/`);
+  }
+
+  // Copy staticwebapp.config.json into dist/ so Azure picks it up
+  const configSrc = path.join(__dirname, 'staticwebapp.config.json');
+  if (fs.existsSync(configSrc)) {
+    fs.copyFileSync(configSrc, path.join(DIST, 'staticwebapp.config.json'));
+    console.log(`  ✓  staticwebapp.config.json → dist/`);
   }
 
   console.log(`\nBuild complete — ${ok} pages rendered, ${fail} errors.\n`);
