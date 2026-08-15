@@ -16,9 +16,9 @@
 <meta property="og:site_name" content="The Spacesuits">
 <meta property="og:title" content="{{or meta.pageTitle meta.defaultTitle}}">
 <meta property="og:description" content="{{or meta.pageDescription meta.defaultDescription}}">
-<meta property="og:url" content="https://www.thespacesuits.com/">
-<meta property="og:image" content="https://www.thespacesuits.com/images/og-default.jpg">
-<meta property="og:image:secure_url" content="https://www.thespacesuits.com/images/og-default.jpg">
+<meta property="og:url" content="{{meta.canonical}}">
+<meta property="og:image" content="{{or meta.ogImage meta.defaultImage}}">
+<meta property="og:image:secure_url" content="{{or meta.ogImage meta.defaultImage}}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
@@ -33,7 +33,7 @@
 <meta name="twitter:creator" content="@thespacesuits">
 <meta name="twitter:title" content="{{or meta.pageTitle meta.defaultTitle}}">
 <meta name="twitter:description" content="{{or meta.pageDescription meta.defaultDescription}}">
-<meta name="twitter:image" content="https://www.thespacesuits.com/images/og-default.jpg">
+<meta name="twitter:image" content="{{or meta.ogImage meta.defaultImage}}">
 
 <!-- ── JSON-LD Structured Data ── -->
 <script type="application/ld+json">
