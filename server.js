@@ -46,7 +46,7 @@ app.engine('hbs', engine({
     nationColor: (n) => ({ us: 'cyan', soviet: 'gold', china: 'gold', esa: 'purple' }[n] || 'paper'),
     severityColor: (s) => ({ Critical: 'red', High: 'gold', Medium: 'paper3' }[s] || 'paper3'),
     truncate: (str, len) => str && str.length > len ? str.slice(0, len) + '…' : str,
-    year: () => new Date().getFullYear(),
+    currentYear: () => new Date().getFullYear(),
     json: (ctx) => JSON.stringify(ctx),
     statusColor: (s) => {
       if (!s) return 'paper3';
