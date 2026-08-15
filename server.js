@@ -262,7 +262,7 @@ app.get('/programs/:nation', (req, res) => {
   if (!nations[nation]) return res.status(404).render('pages/404', { title: '404', meta: defaultMeta });
   const programSuits = suits.filter(s => s.nation === nation);
   res.render('pages/program', {
-    title: `${nations[nation]} Program — The Spacesuits`,
+    title: `${nations[nation]} Spacesuit Program — The Spacesuits`,
     meta: {
       ...defaultMeta,
       pageTitle: `${nations[nation]} Spacesuit Program`,
@@ -294,7 +294,7 @@ app.get('/prototypes', (req, res) => {
 // ABOUT
 app.get('/about', (req, res) => {
   res.render('pages/about', {
-    title: 'About — The Spacesuits Engineering Archive',
+    title: 'About the Archive — The Spacesuits',
     meta: {
       ...defaultMeta,
       pageTitle: 'About the Archive',
