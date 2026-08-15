@@ -18,6 +18,8 @@ const BASE = `http://localhost:${PORT}`;
 const ROUTES = [
   { url: '/',                out: 'index.html' },
   { url: '/database',        out: 'database/index.html' },
+  { url: '/database/iva',    out: 'database/iva/index.html' },
+  { url: '/database/eva',    out: 'database/eva/index.html' },
   { url: '/failures',        out: 'failures/index.html' },
   { url: '/timeline',        out: 'timeline/index.html' },
   { url: '/subsystems',      out: 'subsystems/index.html' },

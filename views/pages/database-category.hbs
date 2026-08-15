@@ -1,0 +1,13 @@
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="eyebrow">// Suit Database → {{categoryLabel}} Suits</div>
+    <h1 class="sh">{{categoryLabel}} Suits</h1>
+    <p class="ss">{{categoryDesc}}</p>
+    <p class="ss">{{totalCount}} suits documented · <a href="/database" style="color:var(--cyan)">Browse full database →</a></p>
+  </div>
+</div>
+<div class="section">
+  <div class="db-grid">
+    {{#each suits}}{{> suit-card}}{{/each}}
+  </div>
+</div>

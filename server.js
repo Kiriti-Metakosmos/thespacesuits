@@ -153,6 +153,62 @@ app.get('/database', (req, res) => {
   });
 });
 
+// DATABASE — IVA suits
+app.get('/database/iva', (req, res) => {
+  const ivaSuits = suits.filter(s => s.category === 'IVA')
+    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+  res.render('pages/database-category', {
+    title: 'IVA Spacesuit Database — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'IVA Suits',
+      pageDescription: `Intravehicular activity spacesuit database. ${ivaSuits.length} IVA pressure garments from Mercury through Sokol-KV-2 — suits worn inside spacecraft for launch, re-entry and emergency protection.`,
+      canonical: `${siteUrl}/database/iva`
+    },
+    categoryLabel: 'IVA',
+    categoryDesc: 'Intravehicular activity suits — worn inside spacecraft for launch, re-entry and emergency pressure protection. Not rated for open-space EVA.',
+    suits: ivaSuits,
+    totalCount: ivaSuits.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+        { '@type': 'ListItem', position: 3, name: 'IVA Suits', item: `${siteUrl}/database/iva` }
+      ]
+    })
+  });
+});
+
+// DATABASE — EVA suits
+app.get('/database/eva', (req, res) => {
+  const evaSuits = suits.filter(s => s.category === 'EVA')
+    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+  res.render('pages/database-category', {
+    title: 'EVA Spacesuit Database — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'EVA Suits',
+      pageDescription: `Extravehicular activity spacesuit database. ${evaSuits.length} EVA suits from BERKUT through AxEMU — pressure garments designed for open-space operations and planetary surface work.`,
+      canonical: `${siteUrl}/database/eva`
+    },
+    categoryLabel: 'EVA',
+    categoryDesc: 'Extravehicular activity suits — pressure garments rated for open-space operations and planetary surface work. Higher performance, life support and mobility requirements than IVA.',
+    suits: evaSuits,
+    totalCount: evaSuits.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+        { '@type': 'ListItem', position: 3, name: 'EVA Suits', item: `${siteUrl}/database/eva` }
+      ]
+    })
+  });
+});
+
 // INDIVIDUAL SUIT
 app.get('/suits/:slug', (req, res) => {
   const suit = suits.find(s => s.slug === req.params.slug);
@@ -386,6 +442,8 @@ app.get('/sitemap.xml', (req, res) => {
   const staticUrls = [
     `${siteUrl}/`,
     `${siteUrl}/database`,
+    `${siteUrl}/database/iva`,
+    `${siteUrl}/database/eva`,
     `${siteUrl}/failures`,
     `${siteUrl}/timeline`,
     `${siteUrl}/subsystems`,
