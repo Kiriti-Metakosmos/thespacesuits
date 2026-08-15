@@ -146,7 +146,7 @@ app.get('/failures', (req, res) => {
     title: 'Failure Cases — The Spacesuits',
     meta: {
       ...defaultMeta,
-      pageTitle: 'Failure Modes & Lessons',
+      pageTitle: 'Failure Cases',
       pageDescription: 'Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire, and 50+ more cases.',
       canonical: `${siteUrl}/failures`
     },
@@ -162,7 +162,7 @@ app.get('/timeline', (req, res) => {
   const byNation = (n) => nonProto.filter(s => s.nation === n)
     .sort((a, b) => (a.firstUse || 2030) - (b.firstUse || 2030));
   res.render('pages/timeline', {
-    title: 'Program Timeline — The Spacesuits',
+    title: 'Development Timeline — The Spacesuits',
     meta: {
       ...defaultMeta,
       pageTitle: 'Development Timeline',
