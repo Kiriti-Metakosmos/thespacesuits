@@ -5,6 +5,7 @@ const compression = require('compression');
 const path = require('path');
 const fs = require('fs');
 
+const { SITE_URL } = require('./config/site');
 const suits = require('./data/suits');
 const failures = require('./data/failures');
 
@@ -45,7 +46,7 @@ app.engine('hbs', engine({
     nationColor: (n) => ({ us: 'cyan', soviet: 'gold', china: 'gold', esa: 'purple' }[n] || 'paper'),
     severityColor: (s) => ({ Critical: 'red', High: 'gold', Medium: 'paper3' }[s] || 'paper3'),
     truncate: (str, len) => str && str.length > len ? str.slice(0, len) + '…' : str,
-    year: () => new Date().getFullYear(),
+    currentYear: () => new Date().getFullYear(),
     json: (ctx) => JSON.stringify(ctx),
     statusColor: (s) => {
       if (!s) return 'paper3';
@@ -60,15 +61,38 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // ── SEO helpers ─────────────────────────────────────────────────
-const siteUrl = 'https://thespacesuits.com';
+const siteUrl = SITE_URL;
 const defaultMeta = {
   siteName: 'The Spacesuits',
   siteUrl,
   twitterHandle: '@thespacesuits',
   defaultTitle: 'The Spacesuits — Engineering Archive',
-  defaultDescription: 'Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. 40+ variants, 70 years of history, real failure cases and technical analysis.',
+  defaultDescription: `Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. ${suits.length} variants, 70 years of history, real failure cases and technical analysis.`,
   defaultImage: `${siteUrl}/images/og-default.jpg`
 };
+
+// ── JSON-LD helpers ─────────────────────────────────────────
+const firstSuitYear = Math.min(...suits.filter(s => s.firstUse).map(s => s.firstUse));
+const jsonLdTag = (obj) => `<script type="application/ld+json">${JSON.stringify(obj)}</script>`;
+const orgNode = {
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Metakosmos Group',
+  url: siteUrl,
+  sameAs: [
+    'https://x.com/MetakosmosOrg',
+    'https://www.linkedin.com/company/spacesuits-com/',
+    'https://www.youtube.com/@metakosmos'
+  ]
+};
+const breadcrumbLd = (canonical, label) => jsonLdTag({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+    { '@type': 'ListItem', position: 2, name: label, item: canonical }
+  ]
+});
 
 // ── Routes ───────────────────────────────────────────────────────
 
@@ -85,7 +109,20 @@ app.get('/', (req, res) => {
     criticalFailures,
     totalSuits: suits.length,
     totalFailures: failures.length,
-    totalNations: nations.length
+    totalNations: nations.length,
+    usSuitCount: suits.filter(s => s.nation === 'us').length,
+    sovietSuitCount: suits.filter(s => s.nation === 'soviet').length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@graph': [orgNode, {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        name: 'The Spacesuits',
+        url: siteUrl,
+        description: defaultMeta.defaultDescription,
+        publisher: { '@id': `${siteUrl}/#organization` }
+      }]
+    })
   });
 });
 
@@ -97,11 +134,78 @@ app.get('/database', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Suit Database',
-      pageDescription: 'Complete spacesuit variant database. 40+ suits across US, Soviet and Russian programs. Filter by nation, category and era.',
+      pageDescription: `Complete spacesuit variant database. ${suits.length} suits across US, Soviet, Russian, Chinese and European programs. Filter by nation, category and era.`,
       canonical: `${siteUrl}/database`
     },
     suits: filtered,
-    totalCount: filtered.length
+    totalCount: filtered.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'Dataset',
+      '@id': `${siteUrl}/database`,
+      name: 'Spacesuit Variant Database',
+      description: `Complete spacesuit variant database. ${suits.length} suits documented across US, Soviet, Russian, Chinese and European programs.`,
+      url: `${siteUrl}/database`,
+      creator: { '@id': `${siteUrl}/#organization` },
+      numberOfItems: suits.length,
+      temporalCoverage: `${firstSuitYear}/${new Date().getFullYear()}`
+    })
+  });
+});
+
+// DATABASE — IVA suits
+app.get('/database/iva', (req, res) => {
+  const ivaSuits = suits.filter(s => s.category === 'IVA')
+    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+  res.render('pages/database-category', {
+    title: 'IVA Spacesuit Database — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'IVA Suits',
+      pageDescription: `Intravehicular activity spacesuit database. ${ivaSuits.length} IVA pressure garments from Mercury through Sokol-KV-2 — suits worn inside spacecraft for launch, re-entry and emergency protection.`,
+      canonical: `${siteUrl}/database/iva`
+    },
+    categoryLabel: 'IVA',
+    categoryDesc: 'Intravehicular activity suits — worn inside spacecraft for launch, re-entry and emergency pressure protection. Not rated for open-space EVA.',
+    suits: ivaSuits,
+    totalCount: ivaSuits.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+        { '@type': 'ListItem', position: 3, name: 'IVA Suits', item: `${siteUrl}/database/iva` }
+      ]
+    })
+  });
+});
+
+// DATABASE — EVA suits
+app.get('/database/eva', (req, res) => {
+  const evaSuits = suits.filter(s => s.category === 'EVA')
+    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+  res.render('pages/database-category', {
+    title: 'EVA Spacesuit Database — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'EVA Suits',
+      pageDescription: `Extravehicular activity spacesuit database. ${evaSuits.length} EVA suits from BERKUT through AxEMU — pressure garments designed for open-space operations and planetary surface work.`,
+      canonical: `${siteUrl}/database/eva`
+    },
+    categoryLabel: 'EVA',
+    categoryDesc: 'Extravehicular activity suits — pressure garments rated for open-space operations and planetary surface work. Higher performance, life support and mobility requirements than IVA.',
+    suits: evaSuits,
+    totalCount: evaSuits.length,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+        { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+        { '@type': 'ListItem', position: 3, name: 'EVA Suits', item: `${siteUrl}/database/eva` }
+      ]
+    })
   });
 });
 
@@ -123,6 +227,7 @@ app.get('/suits/:slug', (req, res) => {
   });
   res.render('suits/detail', {
     title: suit.meta.title,
+    ...suit,
     meta: {
       ...defaultMeta,
       pageTitle: suit.name,
@@ -130,9 +235,30 @@ app.get('/suits/:slug', (req, res) => {
       canonical: `${siteUrl}/suits/${suit.slug}`,
       ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
     },
-    ...suit,
     related,
-    suitFailures
+    suitFailures,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'TechArticle',
+          '@id': `${siteUrl}/suits/${suit.slug}#article`,
+          headline: suit.meta.title,
+          description: suit.meta.description,
+          url: `${siteUrl}/suits/${suit.slug}`,
+          publisher: { '@id': `${siteUrl}/#organization` },
+          datePublished: '2026-06-28'
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Suit Database', item: `${siteUrl}/database` },
+            { '@type': 'ListItem', position: 3, name: suit.name, item: `${siteUrl}/suits/${suit.slug}` }
+          ]
+        }
+      ]
+    })
   });
 });
 
@@ -145,13 +271,14 @@ app.get('/failures', (req, res) => {
     title: 'Failure Cases — The Spacesuits',
     meta: {
       ...defaultMeta,
-      pageTitle: 'Failure Modes & Lessons',
-      pageDescription: 'Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire, and 50+ more cases.',
+      pageTitle: 'Failure Cases',
+      pageDescription: `Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire. ${failures.length} cases on record.`,
       canonical: `${siteUrl}/failures`
     },
     failures: filtered,
     severity,
-    totalCount: filtered.length
+    totalCount: filtered.length,
+    jsonLd: breadcrumbLd(`${siteUrl}/failures`, 'Failure Cases')
   });
 });
 
@@ -161,7 +288,7 @@ app.get('/timeline', (req, res) => {
   const byNation = (n) => nonProto.filter(s => s.nation === n)
     .sort((a, b) => (a.firstUse || 2030) - (b.firstUse || 2030));
   res.render('pages/timeline', {
-    title: 'Program Timeline — The Spacesuits',
+    title: 'Development Timeline — The Spacesuits',
     meta: {
       ...defaultMeta,
       pageTitle: 'Development Timeline',
@@ -171,7 +298,8 @@ app.get('/timeline', (req, res) => {
     usTimeline:     byNation('us'),
     sovietTimeline: byNation('soviet'),
     chinaTimeline:  byNation('china'),
-    esaTimeline:    byNation('esa')
+    esaTimeline:    byNation('esa'),
+    jsonLd: breadcrumbLd(`${siteUrl}/timeline`, 'Development Timeline')
   });
 });
 
@@ -207,7 +335,8 @@ app.get('/subsystems', (req, res) => {
       pageDescription: '16 spacesuit subsystems traced across 70 years: gloves, helmets, life support, mobility joints, thermal, torso entry and more.',
       canonical: `${siteUrl}/subsystems`
     },
-    subsystems
+    subsystems,
+    jsonLd: breadcrumbLd(`${siteUrl}/subsystems`, 'Subsystem Analysis')
   });
 });
 
@@ -248,7 +377,8 @@ app.get('/roadmap', (req, res) => {
       pageDescription: 'Priority spacesuit subsystem improvements for 0–3yr, 3–7yr and 7yr+ horizons. Synthesized from 70 years of US and Soviet operational data.',
       canonical: `${siteUrl}/roadmap`
     },
-    roadmapPriorities
+    roadmapPriorities,
+    jsonLd: breadcrumbLd(`${siteUrl}/roadmap`, 'Development Roadmap')
   });
 });
 
@@ -259,7 +389,7 @@ app.get('/programs/:nation', (req, res) => {
   if (!nations[nation]) return res.status(404).render('pages/404', { title: '404', meta: defaultMeta });
   const programSuits = suits.filter(s => s.nation === nation);
   res.render('pages/program', {
-    title: `${nations[nation]} Program — The Spacesuits`,
+    title: `${nations[nation]} Spacesuit Program — The Spacesuits`,
     meta: {
       ...defaultMeta,
       pageTitle: `${nations[nation]} Spacesuit Program`,
@@ -268,7 +398,8 @@ app.get('/programs/:nation', (req, res) => {
     },
     nation,
     nationLabel: nations[nation],
-    programSuits
+    programSuits,
+    jsonLd: breadcrumbLd(`${siteUrl}/programs/${nation}`, `${nations[nation]} Spacesuit Program`)
   });
 });
 
@@ -280,48 +411,55 @@ app.get('/prototypes', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Prototype & Experimental Suits',
-      pageDescription: 'Pre-spaceflight research prototypes and experimental pressure suit programs. 16 experimental variants from 1956–1974 documented.',
+      pageDescription: `Pre-spaceflight research prototypes and experimental pressure suit programs. ${suits.filter(s => s.isPrototype).length} experimental variants from 1956–1974 documented.`,
       canonical: `${siteUrl}/prototypes`
     },
     suits: prototypeSuits,
-    totalCount: prototypeSuits.length
+    totalCount: prototypeSuits.length,
+    jsonLd: breadcrumbLd(`${siteUrl}/prototypes`, 'Prototype & Experimental Suits')
   });
 });
 
 // ABOUT
 app.get('/about', (req, res) => {
   res.render('pages/about', {
-    title: 'About — The Spacesuits Engineering Archive',
+    title: 'About the Archive — The Spacesuits',
     meta: {
       ...defaultMeta,
       pageTitle: 'About the Archive',
       pageDescription: 'The Spacesuits is a structured engineering archive created by Metakosmos Group. Primary sources, technical analysis, real failure cases.',
       canonical: `${siteUrl}/about`
-    }
+    },
+    totalSuits: suits.length,
+    totalFailures: failures.length
   });
 });
 
 // SITEMAP
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
-  const suitUrls = suits.map(s => `
-  <url>
-    <loc>${siteUrl}/suits/${s.slug}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`).join('');
+  const today = new Date().toISOString().slice(0, 10);
+  const staticUrls = [
+    `${siteUrl}/`,
+    `${siteUrl}/database`,
+    `${siteUrl}/database/iva`,
+    `${siteUrl}/database/eva`,
+    `${siteUrl}/failures`,
+    `${siteUrl}/timeline`,
+    `${siteUrl}/subsystems`,
+    `${siteUrl}/roadmap`,
+    `${siteUrl}/prototypes`,
+    `${siteUrl}/programs/us`,
+    `${siteUrl}/programs/soviet`,
+    `${siteUrl}/programs/china`,
+    `${siteUrl}/programs/esa`,
+    `${siteUrl}/about`,
+  ].map(loc => `\n  <url><loc>${loc}</loc><lastmod>${today}</lastmod></url>`).join('');
+  const suitUrls = suits.map(s =>
+    `\n  <url><loc>${siteUrl}/suits/${s.slug}</loc><lastmod>${today}</lastmod></url>`
+  ).join('');
   res.send(`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${siteUrl}/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>${siteUrl}/database</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>${siteUrl}/failures</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/timeline</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/subsystems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/roadmap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>${siteUrl}/programs/us</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/programs/soviet</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>${siteUrl}/about</loc><changefreq>yearly</changefreq><priority>0.5</priority></url>
-  ${suitUrls}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${staticUrls}${suitUrls}
 </urlset>`);
 });
 

@@ -16,9 +16,9 @@
 <meta property="og:site_name" content="The Spacesuits">
 <meta property="og:title" content="{{or meta.pageTitle meta.defaultTitle}}">
 <meta property="og:description" content="{{or meta.pageDescription meta.defaultDescription}}">
-<meta property="og:url" content="https://www.thespacesuits.com/">
-<meta property="og:image" content="https://www.thespacesuits.com/images/og-default.jpg">
-<meta property="og:image:secure_url" content="https://www.thespacesuits.com/images/og-default.jpg">
+<meta property="og:url" content="{{meta.canonical}}">
+<meta property="og:image" content="{{or meta.ogImage meta.defaultImage}}">
+<meta property="og:image:secure_url" content="{{or meta.ogImage meta.defaultImage}}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
@@ -33,28 +33,8 @@
 <meta name="twitter:creator" content="@thespacesuits">
 <meta name="twitter:title" content="{{or meta.pageTitle meta.defaultTitle}}">
 <meta name="twitter:description" content="{{or meta.pageDescription meta.defaultDescription}}">
-<meta name="twitter:image" content="https://www.thespacesuits.com/images/og-default.jpg">
+<meta name="twitter:image" content="{{or meta.ogImage meta.defaultImage}}">
 
-<!-- ── JSON-LD Structured Data ── -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "name": "The Spacesuits",
-  "url": "https://thespacesuits.com",
-  "description": "Definitive engineering archive of US, Soviet and Russian spacesuit programs. 40+ variants, 70 years, real failure cases.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Metakosmos Group",
-    "url": "https://thespacesuits.com"
-  },
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://thespacesuits.com/database?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
 
 <!-- ── Fonts ── -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,6 +50,7 @@
 
 <!-- ── Stylesheet ── -->
 <link rel="stylesheet" href="/css/main.css">
+{{{jsonLd}}}
 </head>
 <body>
 
@@ -150,8 +131,8 @@
         <li><a href="/programs/soviet">Soviet / Russia</a></li>
         <li><a href="/programs/china">China / CMSA</a></li>
         <li><a href="/programs/esa">Europe / ESA</a></li>
-        <li><a href="/database?category=IVA">IVA Suits</a></li>
-        <li><a href="/database?category=EVA">EVA Suits</a></li>
+        <li><a href="/database/iva">IVA Suits</a></li>
+        <li><a href="/database/eva">EVA Suits</a></li>
       </ul>
     </nav>
 
@@ -169,7 +150,7 @@
   </div>
 
   <div class="footer-bottom">
-    <span>© {{year}} The Spacesuits — thespacesuits.com</span>
+    <span>© {{currentYear}} The Spacesuits — thespacesuits.com</span>
     <span>Created &amp; developed by <a href="https://metakosmosgroup.com" target="_blank" rel="noopener noreferrer">Metakosmos Group</a></span>
     <span>Sources: NASA, Zvezda, OIG, Abramov &amp; Skoog, Thomas &amp; McMann</span>
   </div>

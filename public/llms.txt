@@ -1,0 +1,45 @@
+# The Spacesuits — Engineering Archive
+
+> Structured engineering archive covering US, Soviet, Russian, Chinese and European spacesuit programs. 37 variants, 16 failure cases, 70 years of primary-source documentation. Built by Metakosmos Group.
+
+This archive is built from primary engineering documents — NASA technical reports, OIG audit findings, and the authoritative published references for Soviet programs. Content is structured and normalised against a consistent schema, not aggregated from secondary sources or AI-generated.
+
+## Archive Pages
+
+- [Home](https://www.thespacesuits.com/): Overview and key metrics — suit variants, failure cases, nations covered
+- [Suit Database](https://www.thespacesuits.com/database): Complete index of 37 documented spacesuit variants, filterable by nation, category and era
+- [Failure Cases](https://www.thespacesuits.com/failures): 16 documented failures, near-misses and engineering lessons from US, Soviet, Chinese and ESA programs
+- [Development Timeline](https://www.thespacesuits.com/timeline): Parallel chronology of US and Soviet/Russian spacesuit development from 1931 to present
+- [Subsystem Analysis](https://www.thespacesuits.com/subsystems): Six subsystem deep-dives — gloves, helmets, life support, mobility joints, thermal, torso entry
+- [Development Roadmap](https://www.thespacesuits.com/roadmap): Priority improvement areas synthesised from 70 years of operational data
+- [Prototype Suits](https://www.thespacesuits.com/prototypes): Pre-spaceflight research suits and experimental pressure garment programs
+
+## Program Pages
+
+- [US / NASA Program](https://www.thespacesuits.com/programs/us): US variants from Mercury IVA through AxEMU
+- [Soviet / Russian Program](https://www.thespacesuits.com/programs/soviet): SK-1 through Orlan-MK — IVA rescue suits and EVA systems
+- [China / CMSA Program](https://www.thespacesuits.com/programs/china): Shenzhou IVA through Wangyu lunar suit
+- [Europe / ESA Program](https://www.thespacesuits.com/programs/esa): EVA Suit 2000 prototype and EuroSuit IVA
+
+## Data Model
+
+Each suit variant is documented against a normalised schema covering: operating pressure (psi/kPa), system mass (lb/kg), life support architecture (vehicle-fed / umbilical / autonomous backpack), mission role (IVA / IEVA / EVA), entry and donning method, key subsystem signatures, associated failure modes, and first operational use year.
+
+Failure records include: severity rating (Critical / High / Medium), root cause analysis, corrective action taken, and forward engineering lesson.
+
+## Citation Conventions
+
+Cite individual pages by canonical URL, e.g. https://www.thespacesuits.com/suits/berkut for the BERKUT entry. This archive is not peer-reviewed. Always cite the primary source where available; treat archive data as a structured secondary reference.
+
+## Primary Sources
+
+- Abramov, I.P. & Skoog, A.I. — Russian Spacesuits, Springer Praxis, 2003
+- Thomas, K.S. & McMann, H.J. — U.S. Spacesuits, 2nd ed., Springer Praxis, 2012
+- NASA Office of Inspector General — EVA Suit Reports 2017, 2021, 2025
+- NASA Safety Message — EVA-23 Water Intrusion Investigation
+- NASA Technical Reports Server — Apollo, Gemini, Shuttle program documentation
+
+## Contact
+
+Creator: Metakosmos Group — https://metakosmosgroup.com
+Enquiries: hello@thespacesuits.com
