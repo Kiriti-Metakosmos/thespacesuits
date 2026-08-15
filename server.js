@@ -230,7 +230,7 @@ app.get('/suits/:slug', (req, res) => {
     ...suit,
     meta: {
       ...defaultMeta,
-      pageTitle: suit.name,
+      pageTitle: suit.meta.title.replace(' | The Spacesuits', ''),
       pageDescription: suit.meta.description,
       canonical: `${siteUrl}/suits/${suit.slug}`,
       ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
@@ -246,8 +246,7 @@ app.get('/suits/:slug', (req, res) => {
           headline: suit.meta.title,
           description: suit.meta.description,
           url: `${siteUrl}/suits/${suit.slug}`,
-          publisher: { '@id': `${siteUrl}/#organization` },
-          datePublished: '2026-06-28'
+          publisher: { '@id': `${siteUrl}/#organization` }
         },
         {
           '@type': 'BreadcrumbList',
