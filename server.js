@@ -67,7 +67,7 @@ const defaultMeta = {
   siteUrl,
   twitterHandle: '@thespacesuits',
   defaultTitle: 'The Spacesuits — Engineering Archive',
-  defaultDescription: 'Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. 40+ variants, 70 years of history, real failure cases and technical analysis.',
+  defaultDescription: `Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. ${suits.length} variants, 70 years of history, real failure cases and technical analysis.`,
   defaultImage: `${siteUrl}/images/og-default.jpg`
 };
 
@@ -86,7 +86,9 @@ app.get('/', (req, res) => {
     criticalFailures,
     totalSuits: suits.length,
     totalFailures: failures.length,
-    totalNations: nations.length
+    totalNations: nations.length,
+    usSuitCount: suits.filter(s => s.nation === 'us').length,
+    sovietSuitCount: suits.filter(s => s.nation === 'soviet').length
   });
 });
 
@@ -98,7 +100,7 @@ app.get('/database', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Suit Database',
-      pageDescription: 'Complete spacesuit variant database. 40+ suits across US, Soviet and Russian programs. Filter by nation, category and era.',
+      pageDescription: `Complete spacesuit variant database. ${suits.length} suits across US, Soviet, Russian, Chinese and European programs. Filter by nation, category and era.`,
       canonical: `${siteUrl}/database`
     },
     suits: filtered,
@@ -147,7 +149,7 @@ app.get('/failures', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Failure Cases',
-      pageDescription: 'Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire, and 50+ more cases.',
+      pageDescription: `Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire. ${failures.length} cases on record.`,
       canonical: `${siteUrl}/failures`
     },
     failures: filtered,
@@ -281,7 +283,7 @@ app.get('/prototypes', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Prototype & Experimental Suits',
-      pageDescription: 'Pre-spaceflight research prototypes and experimental pressure suit programs. 16 experimental variants from 1956–1974 documented.',
+      pageDescription: `Pre-spaceflight research prototypes and experimental pressure suit programs. ${suits.filter(s => s.isPrototype).length} experimental variants from 1956–1974 documented.`,
       canonical: `${siteUrl}/prototypes`
     },
     suits: prototypeSuits,
@@ -298,7 +300,9 @@ app.get('/about', (req, res) => {
       pageTitle: 'About the Archive',
       pageDescription: 'The Spacesuits is a structured engineering archive created by Metakosmos Group. Primary sources, technical analysis, real failure cases.',
       canonical: `${siteUrl}/about`
-    }
+    },
+    totalSuits: suits.length,
+    totalFailures: failures.length
   });
 });
 
