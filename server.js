@@ -124,6 +124,7 @@ app.get('/suits/:slug', (req, res) => {
   });
   res.render('suits/detail', {
     title: suit.meta.title,
+    ...suit,
     meta: {
       ...defaultMeta,
       pageTitle: suit.name,
@@ -131,7 +132,6 @@ app.get('/suits/:slug', (req, res) => {
       canonical: `${siteUrl}/suits/${suit.slug}`,
       ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
     },
-    ...suit,
     related,
     suitFailures
   });
