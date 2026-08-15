@@ -31,7 +31,7 @@ module.exports = [
     "slug": "mk2-model-o",
     "meta": {
       "title": "Mk II Model O — Pre-Mercury Prototype Suit 1956 | The Spacesuits",
-      "description": "B.F. Goodrich Mk II Model O experimental pressure suit, 1956. Pre-Mercury research prototype. Archive entry."
+      "description": "B.F. Goodrich Mk II Model O experimental pressure suit, 1956. Pre-Mercury Air Force research prototype evaluating link-net restraint and pressure regulation."
     }
   },
   {
@@ -66,7 +66,7 @@ module.exports = [
     "slug": "mk2-model-r",
     "meta": {
       "title": "Mk II Model R — Pre-Mercury Prototype Suit 1956 | The Spacesuits",
-      "description": "B.F. Goodrich Mk II Model R experimental pressure suit, 1956. Pre-Mercury research prototype. Archive entry."
+      "description": "B.F. Goodrich Mk II Model R experimental pressure suit, 1956. Pre-Mercury Air Force research prototype with pressure bladder and restraint architecture."
     }
   },
   {
@@ -101,7 +101,7 @@ module.exports = [
     "slug": "mk4-arrowhead",
     "meta": {
       "title": "Mk IV Arrowhead — Naval Prototype Suit 1950s | The Spacesuits",
-      "description": "B.F. Goodrich Mk IV Arrowhead naval pressure suit prototype, late 1950s. Archive entry."
+      "description": "B.F. Goodrich Mk IV Arrowhead naval pressure suit prototype, late 1950s. Full-pressure design evaluated by the US Navy before Mercury suit selection."
     }
   },
   {
@@ -171,7 +171,7 @@ module.exports = [
     "slug": "mk4-suit",
     "meta": {
       "title": "Mk IV Suit — Naval Pressure Suit 1960s | The Spacesuits",
-      "description": "B.F. Goodrich Mk IV naval pressure suit, 1960s. Archive entry."
+      "description": "B.F. Goodrich Mk IV naval pressure suit variant, 1960s. Full-pressure design evolved from Mk IV Arrowhead program with updated pressure regulation and fit."
     }
   },
   {
@@ -205,7 +205,7 @@ module.exports = [
     "slug": "mercury-iva",
     "meta": {
       "title": "Mercury IVA Spacesuit — NASA 1961 | The Spacesuits",
-      "description": "Technical archive of the Mercury IVA spacesuit. 3.7 psi, 22 lb, vehicle-fed. First US manned spacesuit by B.F. Goodrich. Engineering specs, failure modes and lessons."
+      "description": "Technical archive of the Mercury IVA spacesuit. 3.7 psi, 22 lb, vehicle-fed. First US manned spacesuit by B.F. Goodrich. Specs, failure modes and lessons."
     },
     "subsystemTags": [
       "life-support",
@@ -243,7 +243,7 @@ module.exports = [
     "slug": "sk-1",
     "meta": {
       "title": "SK-1 Soviet Spacesuit — Gagarin's Vostok 1961 | The Spacesuits",
-      "description": "Gagarin's spacesuit. SK-1 and SK-2 Vostok IVA rescue suits by Zvezda. 300 hPa. Full technical archive including Tereshkova's SK-2 female adaptation and engineering lessons."
+      "description": "Gagarin's spacesuit. SK-1 and SK-2 Vostok IVA rescue suits by Zvezda. 300 hPa. Technical archive including Tereshkova's SK-2 female adaptation and lessons."
     },
     "subsystemTags": [
       "life-support",
@@ -282,7 +282,7 @@ module.exports = [
     "slug": "spd-143",
     "meta": {
       "title": "SPD-143 AX1-L — Apollo Development Prototype 1963 | The Spacesuits",
-      "description": "ILC Industries SPD-143 AX1-L Apollo developmental suit, 1963. Early lunar EVA architecture study. Archive entry."
+      "description": "ILC Industries SPD-143 AX1-L Apollo developmental suit, 1963. Early lunar EVA architecture study evaluating soft-suit mobility and sealing."
     }
   },
   {
@@ -317,7 +317,7 @@ module.exports = [
     "slug": "g3c-david-clark",
     "meta": {
       "title": "G3-C — Gemini Development Prototype 1964 | The Spacesuits",
-      "description": "David Clark Company G3-C Gemini developmental suit, 1964. Direct precursor to operational G4C. Archive entry."
+      "description": "David Clark Company G3-C Gemini developmental suit, 1964. Direct precursor to operational G4C. Pressure garment architecture refined for Gemini orbital EVA."
     }
   },
   {
@@ -352,7 +352,7 @@ module.exports = [
     "slug": "a4h-apollo",
     "meta": {
       "title": "A4-H — Apollo Competition Prototype 1964 | The Spacesuits",
-      "description": "ILC/Hamilton Standard A4-H Apollo developmental suit, 1964. Apollo suit competition entry. Archive entry."
+      "description": "ILC/Hamilton Standard A4-H Apollo developmental suit, 1964. Apollo suit competition entry evaluating mobility joint architecture and pressure regulation."
     }
   },
   {
@@ -387,7 +387,7 @@ module.exports = [
     "slug": "rx2a-litton",
     "meta": {
       "title": "RX-2A — Litton Hard-Shell Prototype 1964 | The Spacesuits",
-      "description": "Litton Industries RX-2A hard-shell pressure suit prototype, 1964. Rigid torso architecture research. Archive entry."
+      "description": "Litton Industries RX-2A hard-shell pressure suit prototype, 1964. Rigid torso architecture research. Evaluated bearing-based mobility for lunar EVA."
     }
   },
   {
@@ -456,7 +456,7 @@ module.exports = [
     "slug": "gemini-g4c",
     "meta": {
       "title": "Gemini G4C Spacesuit — America's First EVA 1965 | The Spacesuits",
-      "description": "The suit Ed White wore on America's first spacewalk. 3.7 psi, 41.75 lb system mass, VCM umbilical. Failure analysis, EVA productivity lessons, full technical data."
+      "description": "The suit Ed White wore on America's first spacewalk. 3.7 psi, 41.75 lb system mass, VCM umbilical. Failure analysis, EVA productivity lessons, technical data."
     },
     "subsystemTags": [
       "gloves",
@@ -494,7 +494,7 @@ module.exports = [
     "slug": "berkut",
     "meta": {
       "title": "BERKUT — World's First EVA Spacesuit 1965 | The Spacesuits",
-      "description": "The spacesuit Alexei Leonov wore for humanity's first spacewalk. BERKUT technical archive: 400 hPa, KP-55 backpack, the near-fatal ballooning incident and its engineering legacy."
+      "description": "The spacesuit Alexei Leonov wore for humanity's first spacewalk. BERKUT: 400 hPa, KP-55 backpack, the ballooning incident and its engineering legacy."
     },
     "subsystemTags": [
       "mobility",
@@ -569,7 +569,7 @@ module.exports = [
     "slug": "a5l-apollo",
     "meta": {
       "title": "A5-L — Apollo Prototype 1965 | The Spacesuits",
-      "description": "ILC Industries A5-L Apollo developmental suit, 1965. Direct precursor to the operational A7L lunar suit. Archive entry."
+      "description": "ILC Industries A5-L Apollo developmental suit, 1965. Direct precursor to the A7L, refining softgoods and joint geometry for the lunar surface mission."
     }
   },
   {
@@ -604,7 +604,7 @@ module.exports = [
     "slug": "mk5-modified",
     "meta": {
       "title": "Mk V Modified — Naval Prototype 1968 | The Spacesuits",
-      "description": "B.F. Goodrich Mk V Modified naval pressure suit, 1968. Archive entry."
+      "description": "B.F. Goodrich Mk V Modified naval pressure suit, 1968. Late-1960s US Navy full-pressure design evolved from the Mk IV program with pressure regulation."
     }
   },
   {
@@ -639,7 +639,7 @@ module.exports = [
     "slug": "ex1a-apollo",
     "meta": {
       "title": "EX1-A — Apollo Applications Prototype 1968 | The Spacesuits",
-      "description": "AiResearch EX1-A Apollo Applications Project developmental suit, 1968. Archive entry."
+      "description": "AiResearch EX1-A Apollo Applications Project developmental suit, 1968. Alternative life-support concept for extended Apollo lunar surface operations."
     }
   },
   {
@@ -674,7 +674,7 @@ module.exports = [
     "slug": "aes-chromel-litton",
     "meta": {
       "title": "AES Chromel-R — Apollo Applications Prototype 1969 | The Spacesuits",
-      "description": "Litton Industries AES Apollo Applications Project suit with Chromel-R cover layer, 1969. Archive entry."
+      "description": "Litton Industries AES Apollo Applications Project suit with Chromel-R cover layer, 1969. Hard-shell hybrid design for extended lunar surface EVA operations."
     }
   },
   {
@@ -708,7 +708,7 @@ module.exports = [
     "slug": "apollo-a7l",
     "meta": {
       "title": "Apollo A7L Spacesuit — Moon Landing 1969 | The Spacesuits",
-      "description": "Neil Armstrong and Buzz Aldrin's lunar suit. 201 lb with PLSS-6, 6-hour EVA, 3.7 psi. Full technical specs, subsystem breakdown, engineering lessons from the Moon program."
+      "description": "Neil Armstrong and Buzz Aldrin's lunar suit. 201 lb with PLSS-6, 6-hour EVA, 3.7 psi. Technical specs, subsystem breakdown, lessons from the Moon program."
     },
     "subsystemTags": [
       "life-support",
@@ -748,7 +748,7 @@ module.exports = [
     "slug": "apollo-a7lb",
     "meta": {
       "title": "Apollo A7LB Spacesuit — Extended Lunar EVA | The Spacesuits",
-      "description": "The upgraded lunar suit for Apollo 15-17 J-missions. 212 lb with PLSS-7, 7-hour EVA, lunar rover compatibility. Extended traverse and exploration capability analysis."
+      "description": "The upgraded lunar suit for Apollo 15-17 J-missions. 212 lb with PLSS-7, 7-hour EVA, lunar rover compatible. Extended traverse and exploration analysis."
     },
     "subsystemTags": [
       "life-support",
@@ -788,7 +788,7 @@ module.exports = [
     "slug": "krechet",
     "meta": {
       "title": "KRECHET — Soviet Lunar Spacesuit Never Flown | The Spacesuits",
-      "description": "The Soviet answer to Apollo's A7L. KRECHET semi-rigid rear-entry lunar EVA suit. 400 hPa, L-3 program. How the cancelled Soviet Moon program shaped all modern EVA architecture."
+      "description": "The Soviet answer to Apollo's A7L. KRECHET rear-entry lunar EVA suit. 400 hPa, L-3 program. How the cancelled Moon program shaped modern EVA architecture."
     },
     "subsystemTags": [
       "torso-entry",
@@ -827,7 +827,7 @@ module.exports = [
     "slug": "ax3-ames",
     "meta": {
       "title": "AX-3 — NASA Ames In-House Prototype 1974 | The Spacesuits",
-      "description": "NASA Ames Research Center AX-3 hard-shell suit prototype, 1974. Rare in-house government design. Archive entry."
+      "description": "NASA Ames Research Center AX-3 hard-shell suit prototype, 1974. Rare in-house government design. Explored bearing-based architecture for planetary EVA."
     }
   },
   {
@@ -861,7 +861,7 @@ module.exports = [
     "slug": "sokol-kv2",
     "meta": {
       "title": "Sokol KV-2 — Soyuz Rescue Spacesuit | The Spacesuits",
-      "description": "The Sokol KV-2 IVA rescue suit still worn on every Soyuz mission today. 400 hPa, Zvezda manufacture. Technical archive, 40-year service history, upgrade lessons."
+      "description": "The Sokol KV-2 IVA rescue suit still worn on every Soyuz mission. 400 hPa, Zvezda manufacture. Technical archive, 40-year service history, upgrade lessons."
     },
     "subsystemTags": [
       "torso-entry",
@@ -899,7 +899,7 @@ module.exports = [
     "slug": "shuttle-emu",
     "meta": {
       "title": "Shuttle EMU Spacesuit — Orbital EVA 1983 | The Spacesuits",
-      "description": "The EMU that built the ISS. 254 lb with PLSS, 8-hour EVA, 4.3 psi. Modular hard torso architecture, MMU compatibility, full technical archive and failure analysis."
+      "description": "The EMU that built the ISS. 254 lb with PLSS, 8-hour EVA, 4.3 psi. Modular hard torso architecture, MMU compatibility, technical archive and failure analysis."
     },
     "subsystemTags": [
       "life-support",
@@ -940,7 +940,7 @@ module.exports = [
     "slug": "eva-suit-2000",
     "meta": {
       "title": "EVA Suit 2000 — ESA European Spacesuit Prototype | The Spacesuits",
-      "description": "ESA and Russia's joint EVA Suit 2000 prototype from 1992-1995. Rear-entry hard torso, 2-minute donning target. The European EVA suit that never flew. Full technical archive."
+      "description": "ESA and Russia's joint EVA Suit 2000 from 1992-1995. Rear-entry hard torso, 2-minute donning target. European EVA suit that never flew. Technical archive."
     },
     "subsystemTags": [
       "torso-entry",
@@ -978,7 +978,7 @@ module.exports = [
     "slug": "orlan-m",
     "meta": {
       "title": "Orlan-M EVA Spacesuit — ISS Russian Operations | The Spacesuits",
-      "description": "The Orlan-M rear-entry EVA suit used on the ISS Russian segment. 5.8 psi, 238 lb, 7-hour EVA. Higher pressure philosophy, fleet maintenance lessons, US EMU comparison."
+      "description": "The Orlan-M rear-entry EVA suit used on the ISS Russian segment. 5.8 psi, 238 lb, 7-hour EVA. Pressure philosophy, fleet maintenance and US EMU comparison."
     },
     "subsystemTags": [
       "life-support",
@@ -1017,7 +1017,7 @@ module.exports = [
     "slug": "enhanced-emu",
     "meta": {
       "title": "Enhanced EMU — ISS EVA Suit 1998-Present | The Spacesuits",
-      "description": "The ISS workhorse. 309 lb system, 8-hour EVA. EVA-23 Parmitano water intrusion incident, OIG 2025 critical warnings, aging fleet crisis. Full technical and failure archive."
+      "description": "The ISS workhorse. 309 lb system, 8-hour EVA. EVA-23 Parmitano water intrusion incident, OIG 2025 critical warnings, aging fleet crisis. Failure archive."
     },
     "subsystemTags": [
       "life-support",
@@ -1095,7 +1095,7 @@ module.exports = [
     "slug": "feitian-gen1",
     "meta": {
       "title": "Feitian Gen-1 — China's First EVA Spacesuit 2008 | The Spacesuits",
-      "description": "The Feitian Gen-1 spacesuit worn by Zhai Zhigang on China's first spacewalk in 2008. Technical archive, Orlan-influenced architecture and engineering analysis."
+      "description": "The Feitian Gen-1 spacesuit worn by Zhai Zhigang on China's first spacewalk in 2008. Orlan-influenced architecture, technical archive and subsystem analysis."
     },
     "subsystemTags": [
       "life-support",
@@ -1133,7 +1133,7 @@ module.exports = [
     "slug": "boeing-starliner",
     "meta": {
       "title": "Boeing Starliner Spacesuit — CST-100 Commercial Crew | The Spacesuits",
-      "description": "Boeing’s IVA spacesuit for CST-100 Starliner, built with David Clark Company. Commercial Crew Program suit. Technical archive and comparison with SpaceX IVA design."
+      "description": "Boeing’s IVA spacesuit for CST-100 Starliner, built with David Clark Company. Commercial Crew Program suit. Technical archive and comparison with SpaceX IVA."
     },
     "subsystemTags": [
       "life-support"
@@ -1170,7 +1170,7 @@ module.exports = [
     "slug": "spacex-iva",
     "meta": {
       "title": "SpaceX IVA Spacesuit — Crew Dragon 2020 | The Spacesuits",
-      "description": "SpaceX's in-house IVA spacesuit for Crew Dragon missions. Designed by Jose Fernandez since 2017. Single-umbilical architecture, 3D printed helmet. Technical archive and commercial crew program analysis."
+      "description": "SpaceX's in-house IVA spacesuit for Crew Dragon. Designed by Jose Fernandez since 2017. Single-umbilical architecture, 3D-printed helmet. Technical archive."
     },
     "subsystemTags": [
       "life-support"
@@ -1207,7 +1207,7 @@ module.exports = [
     "slug": "xemu",
     "meta": {
       "title": "xEMU — NASA's Cancelled Lunar Suit | The Spacesuits",
-      "description": "NASA's xEMU lunar exploration suit, cancelled in 2022 after mass overrun. 8.2 psi operating pressure, highest of any US design. Full failure analysis and program lessons."
+      "description": "NASA's xEMU lunar exploration suit, cancelled in 2022 after mass overrun. 8.2 psi, highest for a US suit. Failure analysis and program lessons."
     },
     "subsystemTags": [
       "life-support",
@@ -1248,7 +1248,7 @@ module.exports = [
     "slug": "feitian-gen2",
     "meta": {
       "title": "Feitian Gen-2 — Tiangong Station EVA Suit 2021 | The Spacesuits",
-      "description": "China's Feitian Gen-2 operational EVA suit for Tiangong station. ~130 kg, 7-hour EVA, liquid cooling PLSS. Fleet operations, lifecycle data and engineering analysis."
+      "description": "China's Feitian Gen-2 operational EVA suit for Tiangong station. ~130 kg, 7-hour EVA, liquid-cooling PLSS. Fleet operations, lifecycle data and analysis."
     },
     "subsystemTags": [
       "life-support",
@@ -1288,7 +1288,7 @@ module.exports = [
     "slug": "axemu",
     "meta": {
       "title": "AxEMU — Axiom Space Artemis Lunar Suit | The Spacesuits",
-      "description": "Axiom Space's commercial lunar EVA suit for NASA Artemis III south-pole mission. Full anthropometric coverage, dust tolerance design. Current qualification status and technical analysis."
+      "description": "Axiom Space's commercial lunar EVA suit for Artemis III. Full anthropometric coverage and dust tolerance. Qualification status and technical analysis."
     },
     "subsystemTags": [
       "life-support",
@@ -1329,7 +1329,7 @@ module.exports = [
     "slug": "wangyu",
     "meta": {
       "title": "Wangyu — China's Lunar Spacesuit 2024 | The Spacesuits",
-      "description": "China's Wangyu lunar EVA suit unveiled 2024, named 2025. Target: crewed lunar landing before 2030. Technical analysis, dust/thermal architecture and comparison with Apollo A7L and AxEMU."
+      "description": "China's Wangyu lunar EVA suit unveiled 2024. Target: crewed lunar landing before 2030. Technical analysis and dust/thermal architecture."
     },
     "subsystemTags": [
       "thermal",
@@ -1368,7 +1368,7 @@ module.exports = [
     "slug": "eurosuit",
     "meta": {
       "title": "EuroSuit — European IVA Spacesuit Prototype 2026 | The Spacesuits",
-      "description": "EuroSuit IVA prototype by CNES, Spartan Space, Decathlon and MEDES. Tested by ESA astronaut Sophie Adenot on ISS in 2026 during εpsilon mission. European spacesuit technology analysis."
+      "description": "EuroSuit IVA by CNES, Spartan Space, Decathlon and MEDES. Tested by Sophie Adenot on ISS in 2026 during εpsilon mission. European spacesuit analysis."
     },
     "subsystemTags": [
       "torso-entry"
