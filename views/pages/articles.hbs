@@ -1,0 +1,42 @@
+<div class="page-header"><div class="page-header-inner">
+  <div class="eyebrow">// Engineering Analysis</div>
+  <h1 class="sh">Articles</h1>
+  <p class="ss">Deep-dives and analysis from the spacesuit archive. {{articles.length}} article{{#unless (eq articles.length 1)}}s{{/unless}}.</p>
+</div></div>
+
+<section class="section">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">// Index</div>
+      <h2 class="sh">All Articles</h2>
+    </div>
+  </div>
+  <div class="failure-preview-grid">
+    {{#each articles}}
+    <div class="failure-preview-card">
+      <div class="fp-header">
+        <span class="tag tag-gold">Analysis</span>
+        <span class="fp-year mono">{{publishDate}}</span>
+      </div>
+      <div class="fp-program">{{title}}</div>
+      <p class="fp-failure">{{dek}}</p>
+      <p class="fp-lesson">→ <a href="/articles/{{slug}}" class="side-lnk">Read article →</a></p>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+<div class="data-strip">
+  <a href="/database" class="data-cell" style="text-decoration:none">
+    <span class="data-big c">DB</span>
+    <span class="data-lbl">Suit Database</span>
+  </a>
+  <a href="/failures" class="data-cell" style="text-decoration:none">
+    <span class="data-big red">!</span>
+    <span class="data-lbl">Failure Cases</span>
+  </a>
+  <a href="/subsystems" class="data-cell" style="text-decoration:none">
+    <span class="data-big gold">SYS</span>
+    <span class="data-lbl">Subsystems</span>
+  </a>
+</div>

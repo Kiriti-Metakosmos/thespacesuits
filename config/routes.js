@@ -17,5 +17,7 @@ module.exports = [
   { url: '/programs/soviet', out: 'programs/soviet/index.html' },
   { url: '/programs/china',  out: 'programs/china/index.html' },
   { url: '/programs/esa',    out: 'programs/esa/index.html' },
-  { url: '/prototypes',      out: 'prototypes/index.html' },
+  { url: '/prototypes',            out: 'prototypes/index.html' },
+  { url: '/articles',              out: 'articles/index.html' },
+  { url: '/articles/glove-failures', out: 'articles/glove-failures/index.html' },
 ];

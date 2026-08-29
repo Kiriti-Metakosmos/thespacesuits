@@ -113,3 +113,12 @@
   </div>
 </div>
 {{/if}}
+
+{{#if referencedIn.length}}
+<div class="section" style="border-top:1px solid var(--border)">
+  <div class="eyebrow" style="margin-bottom:0.75rem">// Referenced in</div>
+  {{#each referencedIn}}
+  <p><a href="/articles/{{slug}}" class="side-lnk">→ {{title}}</a></p>
+  {{/each}}
+</div>
+{{/if}}

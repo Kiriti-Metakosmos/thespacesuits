@@ -34,6 +34,7 @@
         <td>
           <div class="fail-desc">{{failure}}</div>
           <div class="fail-lesson">→ {{lesson}}</div>
+          {{#if referencedIn.length}}{{#each referencedIn}}<div class="fail-lesson"><a href="/articles/{{slug}}" class="side-lnk">// {{title}}</a></div>{{/each}}{{/if}}
         </td>
         <td><span class="sev-{{severityColor severity}}">{{severity}}</span></td>
       </tr>

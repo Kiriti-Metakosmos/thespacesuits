@@ -1,0 +1,73 @@
+<div class="page-header"><div class="page-header-inner">
+  <div class="eyebrow">// <a href="/articles" class="side-lnk">Articles</a></div>
+  <h1 class="sh">{{title}}</h1>
+  <p class="ss">{{dek}}</p>
+  <div class="eyebrow" style="margin-top:1rem">{{author}} · {{publishDate}}</div>
+</div></div>
+
+<section class="section">
+  <div class="editorial" style="grid-template-columns:1fr;border:none;padding:0">
+    <div class="editorial-main" style="border:none;padding:0;max-width:800px">
+      {{{body}}}
+    </div>
+  </div>
+</section>
+
+{{#if relatedSuitObjects.length}}
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">// Related Suits</div>
+      <h2 class="sh">Suits Referenced</h2>
+    </div>
+  </div>
+  <div class="suit-grid">
+    {{#each relatedSuitObjects}}
+    <a href="/suits/{{slug}}" class="suit-card" style="text-decoration:none">
+      <div class="sc-era mono">{{era}}</div>
+      <div class="sc-name">{{name}}</div>
+      <div class="sc-meta">{{nation}} · {{type}}</div>
+    </a>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+
+{{#if relatedFailureObjects.length}}
+<section class="section" style="border-top:1px solid var(--border)">
+  <div class="section-header">
+    <div>
+      <div class="eyebrow">// Related Failures</div>
+      <h2 class="sh">Failure Cases Referenced</h2>
+    </div>
+  </div>
+  <div class="failure-preview-grid">
+    {{#each relatedFailureObjects}}
+    <div class="failure-preview-card">
+      <div class="fp-header">
+        <span class="tag tag-{{#if (eq severity 'Critical')}}red{{else}}{{#if (eq severity 'High')}}gold{{else}}cyan{{/if}}{{/if}}">{{severity}}</span>
+        <span class="fp-year mono">{{id}}</span>
+      </div>
+      <div class="fp-program">{{failure}}</div>
+      <p class="fp-failure">{{effect}}</p>
+      <p class="fp-lesson"><strong>Lesson:</strong> {{lesson}}</p>
+    </div>
+    {{/each}}
+  </div>
+</section>
+{{/if}}
+
+<div class="data-strip">
+  <a href="/articles" class="data-cell" style="text-decoration:none">
+    <span class="data-big gold">←</span>
+    <span class="data-lbl">All Articles</span>
+  </a>
+  <a href="/failures" class="data-cell" style="text-decoration:none">
+    <span class="data-big red">!</span>
+    <span class="data-lbl">Failure Cases</span>
+  </a>
+  <a href="/subsystems" class="data-cell" style="text-decoration:none">
+    <span class="data-big gold">SYS</span>
+    <span class="data-lbl">Subsystems</span>
+  </a>
+</div>

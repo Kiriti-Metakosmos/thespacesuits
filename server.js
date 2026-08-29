@@ -9,6 +9,7 @@ const { SITE_URL } = require('./config/site');
 const STATIC_ROUTES = require('./config/routes');
 const suits = require('./data/suits');
 const failures = require('./data/failures');
+const articles = require('./data/articles');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -95,6 +96,22 @@ const breadcrumbLd = (canonical, label) => jsonLdTag({
   ]
 });
 
+// ── Subsystem definitions (module-level: used by home + subsystems routes) ──
+const SUB_DEFS = [
+  { tag:'gloves',       label:'Gloves & Dexterity',      color:'gold',
+    description:'Most persistent mission-limiting subsystem across all three programs. 12 development lines documented. Torque vs thermal paradox at finger-joint level remains unsolved.' },
+  { tag:'helmet',       label:'Helmets & Visors',         color:'cyan',
+    description:'Visibility, thermal load, comms, dust contamination and maintainability. Helmet penetrations in dusty lunar environments proved consistently problematic across Apollo and concept studies.' },
+  { tag:'life-support', label:'Life Support / LSS',        color:'red',
+    description:'Vehicle-fed IVA vs umbilical EVA vs autonomous backpack. EVA-23 water intrusion (2013) proved contamination sensitivity is life-critical. Water loop management now rated P1 priority.' },
+  { tag:'torso-entry',  label:'Torso & Entry Systems',     color:'cyan',
+    description:'Front vs rear-entry architecture. Soviets pioneered rear-entry from KRECHET (1967) through Orlan. US adopted modular HUT from Shuttle EMU. Rear-entry enables solo donning — critical for planetary surface ops.' },
+  { tag:'mobility',     label:'Mobility Joints',           color:'purple',
+    description:'Link-net restraint (IVA ideal, EVA insufficient) to hard-bearing modular joints. Soviet and US programs independently converged on convolute→hard-bearing progression. Partial-gravity mobility remains under-characterised.' },
+  { tag:'thermal',      label:'Thermal & Materials',       color:'green',
+    description:'LCG became mandatory post-Apollo as EVA duration increased. Dust, cold shadow, and hot-sun regimes simultaneously present at lunar south pole. Modular outer layers and self-cleaning concepts needed.' },
+];
+
 // ── Routes ───────────────────────────────────────────────────────
 
 // HOME
@@ -111,6 +128,7 @@ app.get('/', (req, res) => {
     totalSuits: suits.length,
     totalFailures: failures.length,
     totalNations: nations.length,
+    subsystemCount: SUB_DEFS.length,
     usSuitCount: suits.filter(s => s.nation === 'us').length,
     sovietSuitCount: suits.filter(s => s.nation === 'soviet').length,
     chinaSuitCount: suits.filter(s => s.nation === 'china').length,
@@ -246,6 +264,7 @@ app.get('/suits/:slug', (req, res) => {
     },
     related,
     suitFailures,
+    referencedIn: articles.filter(a => a.relatedSuits.includes(suit.slug)),
     jsonLd: jsonLdTag({
       '@context': 'https://schema.org',
       '@graph': [
@@ -275,6 +294,10 @@ app.get('/failures', (req, res) => {
   const severity = req.query.severity || 'all';
   let filtered = failures;
   if (severity !== 'all') filtered = filtered.filter(f => f.severity === severity);
+  const enrichedFailures = filtered.map(f => ({
+    ...f,
+    referencedIn: articles.filter(a => (a.relatedFailures || []).includes(f.id))
+  }));
   res.render('pages/failures', {
     title: 'Failure Cases — The Spacesuits',
     meta: {
@@ -283,7 +306,7 @@ app.get('/failures', (req, res) => {
       pageDescription: `Documented spacesuit failures, near-misses and engineering lessons. EVA-23, xEMU mass overrun, pure oxygen fire. ${failures.length} cases on record.`,
       canonical: `${siteUrl}/failures`
     },
-    failures: filtered,
+    failures: enrichedFailures,
     severity,
     totalCount: filtered.length,
     jsonLd: breadcrumbLd(`${siteUrl}/failures`, 'Failure Cases')
@@ -313,20 +336,6 @@ app.get('/timeline', (req, res) => {
 
 // SUBSYSTEMS
 app.get('/subsystems', (req, res) => {
-  const SUB_DEFS = [
-    { tag:'gloves',       label:'Gloves & Dexterity',      color:'gold',
-      description:'Most persistent mission-limiting subsystem across all three programs. 12 development lines documented. Torque vs thermal paradox at finger-joint level remains unsolved.' },
-    { tag:'helmet',       label:'Helmets & Visors',         color:'cyan',
-      description:'Visibility, thermal load, comms, dust contamination and maintainability. Helmet penetrations in dusty lunar environments proved consistently problematic across Apollo and concept studies.' },
-    { tag:'life-support', label:'Life Support / LSS',        color:'red',
-      description:'Vehicle-fed IVA vs umbilical EVA vs autonomous backpack. EVA-23 water intrusion (2013) proved contamination sensitivity is life-critical. Water loop management now rated P1 priority.' },
-    { tag:'torso-entry',  label:'Torso & Entry Systems',     color:'cyan',
-      description:'Front vs rear-entry architecture. Soviets pioneered rear-entry from KRECHET (1967) through Orlan. US adopted modular HUT from Shuttle EMU. Rear-entry enables solo donning — critical for planetary surface ops.' },
-    { tag:'mobility',     label:'Mobility Joints',           color:'purple',
-      description:'Link-net restraint (IVA ideal, EVA insufficient) to hard-bearing modular joints. Soviet and US programs independently converged on convolute→hard-bearing progression. Partial-gravity mobility remains under-characterised.' },
-    { tag:'thermal',      label:'Thermal & Materials',       color:'green',
-      description:'LCG became mandatory post-Apollo as EVA duration increased. Dust, cold shadow, and hot-sun regimes simultaneously present at lunar south pole. Modular outer layers and self-cleaning concepts needed.' },
-  ];
   const subsystems = SUB_DEFS.map(def => {
     const tagged = suits.filter(s => s.subsystemTags && s.subsystemTags.includes(def.tag));
     return {
@@ -340,9 +349,10 @@ app.get('/subsystems', (req, res) => {
     meta: {
       ...defaultMeta,
       pageTitle: 'Subsystem Analysis',
-      pageDescription: '16 spacesuit subsystems traced across 70 years: gloves, helmets, life support, mobility joints, thermal, torso entry and more.',
+      pageDescription: `${SUB_DEFS.length} spacesuit subsystems traced across 70 years: gloves, helmets, life support, mobility joints, thermal, torso entry and more.`,
       canonical: `${siteUrl}/subsystems`
     },
+    subsystemCount: SUB_DEFS.length,
     subsystems,
     jsonLd: breadcrumbLd(`${siteUrl}/subsystems`, 'Subsystem Analysis')
   });
@@ -454,6 +464,64 @@ app.get('/about', (req, res) => {
     },
     totalSuits: suits.length,
     totalFailures: failures.length
+  });
+});
+
+// ARTICLES INDEX
+app.get('/articles', (req, res) => {
+  res.render('pages/articles', {
+    title: 'Articles — The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'Articles',
+      pageDescription: `Engineering analysis and deep-dives from the spacesuit archive. ${articles.length} article${articles.length !== 1 ? 's' : ''}.`,
+      canonical: `${siteUrl}/articles`
+    },
+    articles,
+    jsonLd: breadcrumbLd(`${siteUrl}/articles`, 'Articles')
+  });
+});
+
+// ARTICLE DETAIL
+app.get('/articles/:slug', (req, res) => {
+  const article = articles.find(a => a.slug === req.params.slug);
+  if (!article) return res.status(404).render('pages/404', { title: '404 — The Spacesuits', meta: defaultMeta });
+  const relatedSuitObjects = suits.filter(s => article.relatedSuits.includes(s.slug));
+  const relatedFailureObjects = failures.filter(f => (article.relatedFailures || []).includes(f.id));
+  res.render('articles/detail', {
+    title: `${article.title} | The Spacesuits`,
+    ...article,
+    meta: {
+      ...defaultMeta,
+      pageTitle: article.title,
+      pageDescription: article.dek,
+      canonical: `${siteUrl}/articles/${article.slug}`
+    },
+    relatedSuitObjects,
+    relatedFailureObjects,
+    jsonLd: jsonLdTag({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Article',
+          headline: article.title,
+          description: article.dek,
+          datePublished: article.publishDate,
+          dateModified: article.lastModified,
+          author: { '@type': 'Organization', name: article.author },
+          publisher: { '@id': `${siteUrl}/#organization` },
+          url: `${siteUrl}/articles/${article.slug}`
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: 'Articles', item: `${siteUrl}/articles` },
+            { '@type': 'ListItem', position: 3, name: article.title, item: `${siteUrl}/articles/${article.slug}` }
+          ]
+        }
+      ]
+    })
   });
 });
 
