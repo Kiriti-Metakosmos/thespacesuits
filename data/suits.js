@@ -1420,11 +1420,11 @@ module.exports = [
     "agency": "Commercial",
     "manufacturer": "Collins Aerospace (RTX)",
     "category": "EVA",
-    "era": "2020–",
+    "era": "2022–2024",
     "firstUse": null,
     "lastUse": null,
-    "sortYear": 2020,
-    "status": "In development — commercial",
+    "sortYear": 2022,
+    "status": "Withdrawn — exited ISS EVA task order, 2024",
     "pressurePsi": null,
     "pressureKpa": null,
     "pressureHpa": null,
@@ -1433,17 +1433,17 @@ module.exports = [
     "lssPrimary": "Not publicly disclosed",
     "lssBackup": "Not publicly disclosed",
     "evaDurationHr": null,
-    "missionUse": "Commercial space station EVA; NASA xEMU contract finalist 2023",
+    "missionUse": "ISS orbital EVA; received NASA xEVAS task order December 2022; withdrew from task order June 2024",
     "entryDonning": "Not publicly disclosed",
-    "keySubsystem": "Life support system drawing on Collins Aerospace PLSS heritage; RTX aerospace manufacturing; xEMU finalist competing architecture to Axiom AxEMU",
-    "limitations": "Design specifications not public; xEMU contract awarded to Axiom Space June 2023; targeting non-Artemis commercial station market",
-    "programLesson": "Commercial suit competition reduces NASA monopsony risk. Two credible US EVA suit developers creates market resilience and procurement leverage for commercial stations",
-    "futureRelevance": "Commercial space stations — Starlab, Orbital Reef — create independent suit procurement demand outside Artemis. Collins targets this market as Axiom is tied to NASA Artemis contract",
+    "keySubsystem": "Life support system drawing on Collins Aerospace PLSS heritage; RTX aerospace manufacturing",
+    "limitations": "Design specifications not public; withdrew from NASA xEVAS ISS EVA task order June 2024",
+    "programLesson": "xEVAS dual-award to Axiom Space and Collins Aerospace (2022) demonstrated NASA strategy of maintaining two US EVA suit developers. Collins withdrawal in 2024 reverted ISS EVA suit supply to single-provider risk.",
+    "futureRelevance": "Collins exit from xEVAS leaves commercial station EVA market (Starlab, Orbital Reef) without a second-source US EVA suit developer under NASA contract.",
     "color": "purple",
     "slug": "collins-aerospace",
     "meta": {
       "title": "Collins Aerospace Commercial Spacesuit | The Spacesuits",
-      "description": "Collins Aerospace (RTX) commercial EVA suit development. NASA xEMU 2023 finalist. Targeting commercial space station market with RTX life support heritage."
+      "description": "Collins Aerospace (RTX) commercial EVA suit under NASA xEVAS contract 2022–2024. Received ISS EVA task order December 2022. Withdrew June 2024."
     },
     "subsystemTags": [
       "life-support"
