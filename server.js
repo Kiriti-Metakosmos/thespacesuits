@@ -135,7 +135,7 @@ app.get('/', (req, res) => {
 
 // DATABASE — all suits
 app.get('/database', (req, res) => {
-  const filtered = suits.slice().sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+  const filtered = suits.slice().sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/database', {
     title: 'Suit Database — The Spacesuits',
     meta: {
@@ -163,7 +163,7 @@ app.get('/database', (req, res) => {
 // DATABASE — IVA suits
 app.get('/database/iva', (req, res) => {
   const ivaSuits = suits.filter(s => s.category === 'IVA')
-    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+    .sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/database-category', {
     title: 'IVA Spacesuit Database — The Spacesuits',
     meta: {
@@ -191,7 +191,7 @@ app.get('/database/iva', (req, res) => {
 // DATABASE — EVA suits
 app.get('/database/eva', (req, res) => {
   const evaSuits = suits.filter(s => s.category === 'EVA')
-    .sort((a, b) => (a.firstUse || 2024) - (b.firstUse || 2024));
+    .sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/database-category', {
     title: 'EVA Spacesuit Database — The Spacesuits',
     meta: {
@@ -294,7 +294,7 @@ app.get('/failures', (req, res) => {
 app.get('/timeline', (req, res) => {
   const nonProto = suits.filter(s => !s.isPrototype);
   const byNation = (n) => nonProto.filter(s => s.nation === n)
-    .sort((a, b) => (a.firstUse || 2030) - (b.firstUse || 2030));
+    .sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/timeline', {
     title: 'Development Timeline — The Spacesuits',
     meta: {
@@ -395,7 +395,7 @@ app.get('/programs/:nation', (req, res) => {
   const nations = { us: 'United States', soviet: 'Soviet / Russian', china: 'China / CMSA', esa: 'Europe / ESA' };
   const nation = req.params.nation;
   if (!nations[nation]) return res.status(404).render('pages/404', { title: '404', meta: defaultMeta });
-  const programSuits = suits.filter(s => s.nation === nation);
+  const programSuits = suits.filter(s => s.nation === nation).sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/program', {
     title: `${nations[nation]} Spacesuit Program — The Spacesuits`,
     meta: {
@@ -413,7 +413,7 @@ app.get('/programs/:nation', (req, res) => {
 
 // PROTOTYPES
 app.get('/prototypes', (req, res) => {
-  const prototypeSuits = suits.filter(s => s.isPrototype === true);
+  const prototypeSuits = suits.filter(s => s.isPrototype === true).sort((a, b) => a.sortYear - b.sortYear);
   res.render('pages/prototypes', {
     title: 'Prototype & Experimental Suits — The Spacesuits',
     meta: {
