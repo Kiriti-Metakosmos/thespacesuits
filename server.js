@@ -164,6 +164,7 @@ app.get('/database', (req, res) => {
     },
     suits: filtered,
     totalCount: filtered.length,
+    prototypeCount: suits.filter(s => s.isPrototype).length,
     jsonLd: jsonLdTag({
       '@context': 'https://schema.org',
       '@type': 'Dataset',
@@ -448,6 +449,7 @@ app.get('/market', (req, res) => {
       pageDescription: 'Global spacesuit market landscape 2024–2030. Active programs from NASA, Axiom Space, SpaceX, Boeing, Roscosmos and CMSA. Procurement timelines, costs and commercial entrants.',
       canonical: `${siteUrl}/market`
     },
+    subsystemCount: SUB_DEFS.length,
     jsonLd: breadcrumbLd(`${siteUrl}/market`, 'Spacesuit Market')
   });
 });
