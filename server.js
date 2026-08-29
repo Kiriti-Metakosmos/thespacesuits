@@ -419,6 +419,20 @@ app.get('/prototypes', (req, res) => {
   });
 });
 
+// MARKET
+app.get('/market', (req, res) => {
+  res.render('pages/market', {
+    title: 'Spacesuit Market — Commercial & Government Programs 2024–2030 | The Spacesuits',
+    meta: {
+      ...defaultMeta,
+      pageTitle: 'Spacesuit Market',
+      pageDescription: 'Global spacesuit market landscape 2024–2030. Active programs from NASA, Axiom Space, SpaceX, Boeing, Roscosmos and CMSA. Procurement timelines, costs and commercial entrants.',
+      canonical: `${siteUrl}/market`
+    },
+    jsonLd: breadcrumbLd(`${siteUrl}/market`, 'Spacesuit Market')
+  });
+});
+
 // ABOUT
 app.get('/about', (req, res) => {
   res.render('pages/about', {
@@ -453,7 +467,8 @@ app.get('/sitemap.xml', (req, res) => {
     `${siteUrl}/programs/china`,
     `${siteUrl}/programs/esa`,
     `${siteUrl}/about`,
-  ].map(loc => `\n  <url><loc>${loc}</loc><lastmod>${today}</lastmod></url>`).join('');
+    `${siteUrl}/market`,
+  ].map(loc => `\n  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${loc.includes('/market') ? '0.9' : '0.8'}</priority></url>`).join('');
   const suitUrls = suits.map(s =>
     `\n  <url><loc>${siteUrl}/suits/${s.slug}</loc><lastmod>${today}</lastmod></url>`
   ).join('');

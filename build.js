@@ -25,6 +25,7 @@ const ROUTES = [
   { url: '/subsystems',      out: 'subsystems/index.html' },
   { url: '/roadmap',         out: 'roadmap/index.html' },
   { url: '/about',           out: 'about/index.html' },
+  { url: '/market',          out: 'market/index.html' },
   { url: '/programs/us',     out: 'programs/us/index.html' },
   { url: '/programs/soviet', out: 'programs/soviet/index.html' },
   { url: '/programs/china',  out: 'programs/china/index.html' },
