@@ -1373,5 +1373,42 @@ module.exports = [
     "subsystemTags": [
       "torso-entry"
     ]
+  },
+  {
+    "id": "collins-aerospace",
+    "variantId": "VAR-021",
+    "name": "Collins Aerospace Commercial Spacesuit",
+    "program": "Commercial Crew / Exploration",
+    "nation": "us",
+    "agency": "Commercial",
+    "manufacturer": "Collins Aerospace (RTX)",
+    "category": "EVA",
+    "era": "2020–",
+    "firstUse": null,
+    "lastUse": null,
+    "status": "In development — commercial",
+    "pressurePsi": null,
+    "pressureKpa": null,
+    "pressureHpa": null,
+    "massLb": null,
+    "systemMassLb": null,
+    "lssPrimary": "Not publicly disclosed",
+    "lssBackup": "Not publicly disclosed",
+    "evaDurationHr": null,
+    "missionUse": "Commercial space station EVA; NASA xEMU contract finalist 2023",
+    "entryDonning": "Not publicly disclosed",
+    "keySubsystem": "Life support system drawing on Collins Aerospace PLSS heritage; RTX aerospace manufacturing; xEMU finalist competing architecture to Axiom AxEMU",
+    "limitations": "Design specifications not public; xEMU contract awarded to Axiom Space June 2023; targeting non-Artemis commercial station market",
+    "programLesson": "Commercial suit competition reduces NASA monopsony risk. Two credible US EVA suit developers creates market resilience and procurement leverage for commercial stations",
+    "futureRelevance": "Commercial space stations — Starlab, Orbital Reef — create independent suit procurement demand outside Artemis. Collins targets this market as Axiom is tied to NASA Artemis contract",
+    "color": "purple",
+    "slug": "collins-aerospace",
+    "meta": {
+      "title": "Collins Aerospace Commercial Spacesuit | The Spacesuits",
+      "description": "Collins Aerospace (RTX) commercial EVA suit development. NASA xEMU 2023 finalist. Targeting commercial space station market with RTX life support heritage."
+    },
+    "subsystemTags": [
+      "life-support"
+    ]
   }
 ];

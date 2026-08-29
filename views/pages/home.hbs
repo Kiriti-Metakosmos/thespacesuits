@@ -30,14 +30,8 @@
 <!-- TICKER -->
 <div class="ticker" aria-label="Suit variants ticker">
   <div class="ticker-inner">
-    <span class="ticker-item"><em>US</em> Mercury IVA · X-15 · Gemini G3C · G4C · G5C · Apollo A7L · A7LB · Skylab · EMU · ACES · Enhanced EMU · xEMU · AxEMU</span>
-    <span class="ticker-item"><em>SOVIET/RU</em> SK-1 · SK-2 · BERKUT · YASTREB · KRECHET · SOKOL-K · SOKOL-KV-2 · ORLAN-D · ORLAN-DM · ORLAN-DMA · ORLAN-M · ORLAN-MK · STRIZH</span>
-    <span class="ticker-item"><em>CHINA</em> Shenzhou IVA · Haiying · Feitian Gen-1 · Feitian Gen-2 · Feitian D/E · Wangyu Lunar Suit</span>
-    <span class="ticker-item"><em>EUROPE/ESA</em> EVA Suit 2000 · EuroSuit IVA · Hermes EVA Concept</span>
-    <span class="ticker-item"><em>US</em> Mercury IVA · X-15 · Gemini G3C · G4C · G5C · Apollo A7L · A7LB · Skylab · EMU · ACES · Enhanced EMU · xEMU · AxEMU</span>
-    <span class="ticker-item"><em>SOVIET/RU</em> SK-1 · SK-2 · BERKUT · YASTREB · KRECHET · SOKOL-K · SOKOL-KV-2 · ORLAN-D · ORLAN-DM · ORLAN-DMA · ORLAN-M · ORLAN-MK · STRIZH</span>
-    <span class="ticker-item"><em>CHINA</em> Shenzhou IVA · Haiying · Feitian Gen-1 · Feitian Gen-2 · Feitian D/E · Wangyu Lunar Suit</span>
-    <span class="ticker-item"><em>EUROPE/ESA</em> EVA Suit 2000 · EuroSuit IVA · Hermes EVA Concept</span>
+    {{#each tickerGroups}}<span class="ticker-item"><em>{{label}}</em> {{names}}</span>{{/each}}
+    {{#each tickerGroups}}<span class="ticker-item"><em>{{label}}</em> {{names}}</span>{{/each}}
   </div>
 </div>
 
@@ -59,9 +53,9 @@
     <div class="era-desc">Hard failures, near-misses, chronic constraints. Includes EVA-23 — the helmet water intrusion that nearly killed Luca Parmitano.</div>
   </a>
   <a href="/programs/china" class="era-cell ec-next">
-    <div class="era-num">4</div>
+    <div class="era-num">{{chinaSuitCount}}</div>
     <div class="era-title">China &amp; Europe Now Live</div>
-    <div class="era-desc">6 Chinese suits from Shenzhou IVA through Wangyu lunar suit. Plus ESA EVA Suit 2000 and EuroSuit IVA tested on ISS by Sophie Adenot in 2026.</div>
+    <div class="era-desc">{{chinaSuitCount}} Chinese suits from Shenzhou IVA through Wangyu lunar suit. Plus ESA EVA Suit 2000 and EuroSuit IVA tested on ISS by Sophie Adenot in 2026.</div>
   </a>
 </div>
 

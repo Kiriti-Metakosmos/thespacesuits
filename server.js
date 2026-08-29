@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { SITE_URL } = require('./config/site');
+const STATIC_ROUTES = require('./config/routes');
 const suits = require('./data/suits');
 const failures = require('./data/failures');
 
@@ -67,7 +68,7 @@ const defaultMeta = {
   siteUrl,
   twitterHandle: '@thespacesuits',
   defaultTitle: 'The Spacesuits — Engineering Archive',
-  defaultDescription: `Definitive engineering archive of US, Soviet, Russian and Chinese spacesuit programs. ${suits.length} variants, 70 years of history, real failure cases and technical analysis.`,
+  defaultDescription: `Definitive engineering archive of US, Soviet, Russian, Chinese and European spacesuit programs. ${suits.length} variants, 70 years of history, real failure cases and technical analysis.`,
   defaultImage: `${siteUrl}/images/og-default.jpg`
 };
 
@@ -112,6 +113,12 @@ app.get('/', (req, res) => {
     totalNations: nations.length,
     usSuitCount: suits.filter(s => s.nation === 'us').length,
     sovietSuitCount: suits.filter(s => s.nation === 'soviet').length,
+    chinaSuitCount: suits.filter(s => s.nation === 'china').length,
+    esaSuitCount: suits.filter(s => s.nation === 'esa').length,
+    tickerGroups: ['us','soviet','china','esa'].map(n => ({
+      label: { us: 'US', soviet: 'SOVIET/RU', china: 'CHINA', esa: 'EUROPE/ESA' }[n],
+      names: suits.filter(s => !s.isPrototype && s.nation === n).map(s => s.name).join(' · ')
+    })).filter(g => g.names),
     jsonLd: jsonLdTag({
       '@context': 'https://schema.org',
       '@graph': [orgNode, {
@@ -233,7 +240,9 @@ app.get('/suits/:slug', (req, res) => {
       pageTitle: suit.meta.title.replace(' | The Spacesuits', ''),
       pageDescription: suit.meta.description,
       canonical: `${siteUrl}/suits/${suit.slug}`,
-      ogImage: `${siteUrl}/images/suits/${suit.slug}.jpg`
+      ogImage: fs.existsSync(path.join(__dirname, 'public/images/suits', suit.slug + '.jpg'))
+        ? `${siteUrl}/images/suits/${suit.slug}.jpg`
+        : undefined
     },
     related,
     suitFailures,
@@ -452,23 +461,9 @@ app.get('/about', (req, res) => {
 app.get('/sitemap.xml', (req, res) => {
   res.header('Content-Type', 'application/xml');
   const today = new Date().toISOString().slice(0, 10);
-  const staticUrls = [
-    `${siteUrl}/`,
-    `${siteUrl}/database`,
-    `${siteUrl}/database/iva`,
-    `${siteUrl}/database/eva`,
-    `${siteUrl}/failures`,
-    `${siteUrl}/timeline`,
-    `${siteUrl}/subsystems`,
-    `${siteUrl}/roadmap`,
-    `${siteUrl}/prototypes`,
-    `${siteUrl}/programs/us`,
-    `${siteUrl}/programs/soviet`,
-    `${siteUrl}/programs/china`,
-    `${siteUrl}/programs/esa`,
-    `${siteUrl}/about`,
-    `${siteUrl}/market`,
-  ].map(loc => `\n  <url><loc>${loc}</loc><lastmod>${today}</lastmod><priority>${loc.includes('/market') ? '0.9' : '0.8'}</priority></url>`).join('');
+  const staticUrls = STATIC_ROUTES.map(r =>
+    `\n  <url><loc>${siteUrl}${r.url}</loc><lastmod>${today}</lastmod></url>`
+  ).join('');
   const suitUrls = suits.map(s =>
     `\n  <url><loc>${siteUrl}/suits/${s.slug}</loc><lastmod>${today}</lastmod></url>`
   ).join('');
